@@ -1,0 +1,532 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import mascot from "../assets/guru-mascot.png";
+import { services, telHref } from "../data/services";
+
+// Hybrid assistant: guided buttons answer the common cases instantly; anything
+// typed goes to /api/chat (Claude Haiku, see worker/index.ts). Every answer ends
+// with the matching service's call button.
+const catalog = services.map((s) => ({
+  slug: s.slug,
+  name: s.name,
+  tel: s.phone ? telHref(s.phone) : "",
+  display: s.phoneDisplay ?? "",
+}));
+---
+
+<div class="chat" data-services={JSON.stringify(catalog)}>
+  <button class="chat-toggle" aria-expanded="false" aria-controls="chat-panel">
+    <Icon name="chat" size={26} class="i-open" />
+    <Icon name="close" size={26} class="i-close" />
+    <span class="toggle-label">Questions? Ask the Guru</span>
+  </button>
+
+  <section id="chat-panel" class="panel" role="dialog" aria-label="Home Services Guru assistant" hidden>
+    <header class="panel-head">
+      <Image src={mascot} alt="" width={44} height={41} />
+      <div>
+        <strong>Ask the Guru</strong>
+        <span>Automated virtual assistant</span>
+      </div>
+      <button class="close" aria-label="Close chat"><Icon name="close" size={22} /></button>
+    </header>
+
+    <div class="log" role="log" aria-live="polite"></div>
+
+    <form class="ask">
+      <label class="visually-hidden" for="chat-input">Type your question</label>
+      <input id="chat-input" name="q" type="text" maxlength="500" autocomplete="off" placeholder="Type a question…" />
+      <button type="submit" aria-label="Send"><Icon name="arrow" size={20} /></button>
+    </form>
+    <p class="fineprint">For fire, smoke or a gas smell, leave and call 911.</p>
+  </section>
+</div>
+
+<script>
+  type Svc = { slug: string; name: string; tel: string; display: string };
+  type Turn = { role: "user" | "assistant"; content: string };
+  type Step = { say: string; service?: string; options?: { label: string; next: string }[] };
+
+  // Guided flow. Keys are steps; "svc:<slug>" ends on that service's call card.
+  const FLOW: Record<string, Step> = {
+    start: {
+      say: "Hi! I'm the Home Services Guru virtual assistant. What's going on at home?",
+      options: [
+        { label: "Leak, clog or water heater", next: "svc:plumbing" },
+        { label: "Water damage or flooding", next: "water" },
+        { label: "No heat or AC", next: "svc:hvac" },
+        { label: "Electrical problem", next: "electric" },
+        { label: "Bugs or pests", next: "svc:pest-control" },
+        { label: "Broken appliance", next: "svc:appliance-repair" },
+        { label: "Roof or storm damage", next: "storm" },
+        { label: "Remodeling project", next: "remodel" },
+        { label: "Something else", next: "all" },
+      ],
+    },
+    water: {
+      say: "If water is still coming in, shut off your home's main water valve if you can do it safely. A water damage pro can dry things out and help prevent mold.",
+      service: "water-damage",
+    },
+    electric: {
+      say: "If you see sparks, smell burning or have a hot outlet, switch off that breaker if it's safe, or leave and call 911. Otherwise, a local electrician can track down the problem.",
+      service: "electrical",
+    },
+    storm: {
+      say: "What got damaged?",
+      options: [
+        { label: "The roof", next: "svc:roofing" },
+        { label: "Fallen or leaning tree", next: "svc:tree-services" },
+        { label: "Water got inside", next: "water" },
+      ],
+    },
+    remodel: {
+      say: "Which room are you thinking about?",
+      options: [
+        { label: "Bathroom", next: "svc:bathroom-remodeling" },
+        { label: "Kitchen", next: "svc:kitchen-remodeling" },
+        { label: "Something else", next: "all" },
+      ],
+    },
+  };
+
+  const SERVICE_LINES: Record<string, string> = {
+    plumbing: "A local plumber can handle leaks, clogs, water heaters and more.",
+    hvac: "A local heating and cooling pro can get your system running again.",
+    "pest-control": "A local pest control pro can identify what you're dealing with and treat it.",
+    "appliance-repair": "A local appliance repair pro can diagnose it and get it working.",
+    roofing: "A local roofer can inspect the damage and talk you through repair options.",
+    "tree-services": "A local tree service can safely remove or secure it. Stay clear of any downed power lines.",
+    "bathroom-remodeling": "A local remodeler can talk through your ideas and give you a quote.",
+    "kitchen-remodeling": "A local remodeler can talk through your ideas and give you a quote.",
+  };
+
+  const root = document.querySelector<HTMLElement>(".chat");
+  if (root) {
+    const services: Svc[] = JSON.parse(root.dataset.services ?? "[]");
+    const bySlug = new Map(services.map((s) => [s.slug, s]));
+    const toggle = root.querySelector<HTMLButtonElement>(".chat-toggle")!;
+    const panel = root.querySelector<HTMLElement>(".panel")!;
+    const log = root.querySelector<HTMLElement>(".log")!;
+    const form = root.querySelector<HTMLFormElement>(".ask")!;
+    const input = root.querySelector<HTMLInputElement>("#chat-input")!;
+    const history: Turn[] = [];
+    let started = false;
+    let busy = false;
+
+    const scroll = () => (log.scrollTop = log.scrollHeight);
+
+    function bubble(text: string, who: "bot" | "me") {
+      const p = document.createElement("p");
+      p.className = `msg ${who}`;
+      p.textContent = text;
+      log.append(p);
+      history.push({ role: who === "me" ? "user" : "assistant", content: text });
+      scroll();
+      return p;
+    }
+
+    function callCard(slug: string) {
+      const s = bySlug.get(slug);
+      if (!s) return;
+      const a = document.createElement("a");
+      a.className = "call-card";
+      a.dataset.chatCall = slug;
+      if (s.tel) {
+        a.href = s.tel;
+        a.innerHTML = `<span class="cc-top"></span><span class="cc-num"></span>`;
+        a.querySelector(".cc-top")!.textContent = `Call about ${s.name.toLowerCase()}`;
+        a.querySelector(".cc-num")!.textContent = s.display;
+      } else {
+        a.href = `/services/${s.slug}/`;
+        a.innerHTML = `<span class="cc-top"></span><span class="cc-num">Request a callback</span>`;
+        a.querySelector(".cc-top")!.textContent = s.name;
+      }
+      log.append(a);
+      scroll();
+    }
+
+    function chips(options: { label: string; onPick: () => void }[]) {
+      const wrap = document.createElement("div");
+      wrap.className = "chips";
+      for (const o of options) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = o.label;
+        b.addEventListener("click", () => {
+          wrap.remove();
+          o.onPick();
+        });
+        wrap.append(b);
+      }
+      log.append(wrap);
+      scroll();
+    }
+
+    function restartChip() {
+      chips([{ label: "Start over", onPick: () => go("start") }]);
+    }
+
+    function go(key: string) {
+      if (key === "all") {
+        bubble("No problem. Which of these is closest?", "bot");
+        chips(services.map((s) => ({ label: s.name, onPick: () => (bubble(s.name, "me"), go(`svc:${s.slug}`)) })));
+        return;
+      }
+      if (key.startsWith("svc:")) {
+        const slug = key.slice(4);
+        bubble(SERVICE_LINES[slug] ?? `A local ${bySlug.get(slug)?.name.toLowerCase()} pro can help.`, "bot");
+        callCard(slug);
+        restartChip();
+        return;
+      }
+      const step = FLOW[key];
+      bubble(step.say, "bot");
+      if (step.service) {
+        callCard(step.service);
+        restartChip();
+      }
+      if (step.options) {
+        chips(step.options.map((o) => ({ label: o.label, onPick: () => (bubble(o.label, "me"), go(o.next)) })));
+      }
+    }
+
+    function setOpen(open: boolean) {
+      panel.hidden = !open;
+      toggle.setAttribute("aria-expanded", String(open));
+      root!.classList.toggle("open", open);
+      if (open && !started) {
+        started = true;
+        go("start");
+      }
+      if (open) input.focus({ preventScroll: true });
+    }
+
+    toggle.addEventListener("click", () => setOpen(panel.hidden));
+    root.querySelector(".close")!.addEventListener("click", () => setOpen(false));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !panel.hidden) setOpen(false);
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q || busy) return;
+      busy = true;
+      input.value = "";
+      log.querySelectorAll(".chips").forEach((c) => c.remove());
+      bubble(q, "me");
+      const typing = document.createElement("p");
+      typing.className = "msg bot typing";
+      typing.innerHTML = "<span></span><span></span><span></span>";
+      typing.setAttribute("aria-label", "The assistant is typing");
+      log.append(typing);
+      scroll();
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: history }),
+        });
+        const data = await res.json().catch(() => ({}));
+        typing.remove();
+        bubble(data.reply || "Sorry, something went wrong. Pick your service below to talk to a local pro.", "bot");
+        if (data.service && data.service !== "none") {
+          callCard(data.service);
+          restartChip();
+        } else if (data.unavailable || !res.ok) {
+          go("all");
+        }
+      } catch {
+        typing.remove();
+        bubble("Sorry, I couldn't connect. Pick your service below to talk to a local pro.", "bot");
+        go("all");
+      } finally {
+        busy = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .chat {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 70;
+    font-size: 0.95rem;
+  }
+
+  .chat-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    height: 58px;
+    padding: 0 22px 0 18px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+  }
+
+  .chat-toggle :global(svg) {
+    color: var(--orange);
+  }
+
+  .chat-toggle :global(.i-close),
+  .chat.open .chat-toggle :global(.i-open) {
+    display: none;
+  }
+
+  .chat.open .chat-toggle :global(.i-close) {
+    display: block;
+  }
+
+  .chat.open .toggle-label {
+    display: none;
+  }
+
+  .chat.open .chat-toggle {
+    width: 58px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .panel {
+    position: absolute;
+    right: 0;
+    bottom: 72px;
+    width: min(380px, calc(100vw - 32px));
+    height: min(560px, calc(100vh - 140px));
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 24px 64px rgb(21 28 36 / 24%);
+    overflow: hidden;
+  }
+
+  .panel[hidden] {
+    display: none;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .panel-head img {
+    width: 44px;
+    height: auto;
+  }
+
+  .panel-head strong {
+    display: block;
+    font-family: var(--font-display);
+    color: var(--ink);
+  }
+
+  .panel-head span {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .close {
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .log {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .log :global(.msg) {
+    max-width: 86%;
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 16px;
+    line-height: 1.45;
+  }
+
+  .log :global(.msg.bot) {
+    align-self: flex-start;
+    background: var(--cream);
+    color: var(--ink);
+    border-bottom-left-radius: 4px;
+  }
+
+  .log :global(.msg.me) {
+    align-self: flex-end;
+    background: var(--navy);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+
+  .log :global(.chips) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .log :global(.chips button) {
+    padding: 8px 14px;
+    border: 1.5px solid var(--orange-strong);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--orange-ink);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .log :global(.chips button:hover) {
+    background: var(--orange-soft);
+  }
+
+  .log :global(.call-card) {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: var(--orange-strong);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgb(226 85 0 / 28%);
+  }
+
+  .log :global(.cc-top) {
+    font-size: 0.82rem;
+    opacity: 0.92;
+  }
+
+  .log :global(.cc-num) {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+
+  .log :global(.typing) {
+    display: flex;
+    gap: 4px;
+  }
+
+  .log :global(.typing span) {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--muted);
+    animation: blink 1.2s infinite ease-in-out;
+  }
+
+  .log :global(.typing span:nth-child(2)) {
+    animation-delay: 0.2s;
+  }
+
+  .log :global(.typing span:nth-child(3)) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0%,
+    80%,
+    100% {
+      opacity: 0.3;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  .ask {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  .ask input {
+    flex: 1;
+    min-width: 0;
+    height: 46px;
+    padding: 0 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    font: inherit;
+  }
+
+  .ask input:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+
+  .ask button {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--orange-strong);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .fineprint {
+    margin: 0;
+    padding: 0 14px 10px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* Phones: sit above the sticky call bar; compact launcher */
+  @media (max-width: 720px) {
+    .chat {
+      right: 12px;
+      bottom: 96px;
+    }
+    .toggle-label {
+      display: none;
+    }
+    .chat-toggle {
+      width: 54px;
+      height: 54px;
+      padding: 0;
+      justify-content: center;
+    }
+    .chat.open .chat-toggle {
+      display: none;
+    }
+    .panel {
+      position: fixed;
+      inset: auto 8px 92px 8px;
+      width: auto;
+      height: min(560px, calc(100dvh - 180px));
+    }
+  }
+</style>

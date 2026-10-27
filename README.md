@@ -22,6 +22,9 @@ npm run dev
 The repo is connected to the Cloudflare Worker `homeguru` (Workers Builds). Each push to `main` runs `npm run build`, then `npx wrangler deploy`, which reads `wrangler.jsonc` and uploads `dist/` as static assets.
 
 - Preview URL: https://homeguru.solitary-wind-193d.workers.dev
+- `worker/index.ts`: the Worker. It answers `POST /api/chat` with Claude Haiku (structured output: a reply plus the service whose call button to show) and serves everything else from `dist/`. Its system prompt holds the copy rules: no vetted/licensed/insured claims, no 24/7, no prices.
+- Chat needs one secret, set once: `npx wrangler secret put ANTHROPIC_API_KEY --name homeguru`. Without it, typed questions fall back to the service list; the guided buttons always work.
+- `src/components/ChatWidget.astro`: the chat bubble. The guided-button flow (`FLOW`) is at the top of its script.
 - Node version: read from `.node-version` (Astro 7 needs Node 22.12 or newer)
 
 ## Where things live
