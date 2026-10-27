@@ -1,0 +1,514 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import CallButton from "../../components/CallButton.astro";
+import HowItWorks from "../../components/HowItWorks.astro";
+import Faq from "../../components/Faq.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import GuideCard from "../../components/GuideCard.astro";
+import { services, type Service } from "../../data/services";
+import { guides } from "../../data/guides";
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+interface Props {
+  service: Service;
+}
+
+const { service: s } = Astro.props;
+const lower = s.name.toLowerCase();
+const related = services.filter((o) => o.slug !== s.slug && o.emergency === s.emergency).slice(0, 4);
+const serviceGuides = guides.filter((g) => g.service === s.slug);
+const url = new URL(`/services/${s.slug}/`, Astro.site).href;
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${s.name} referrals`,
+    serviceType: s.name,
+    description: s.intro,
+    url,
+    areaServed: { "@type": "Country", name: "United States" },
+    provider: { "@type": "Organization", name: "Home Services Guru", url: "https://homeservices.guru/" },
+    ...(s.phone ? { telephone: "+" + s.phone } : {}),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: s.faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://homeservices.guru/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://homeservices.guru/#services" },
+      { "@type": "ListItem", position: 3, name: s.name, item: url },
+    ],
+  },
+];
+---
+
+<Base
+  title={`${s.name} Near You | Call a Trusted Local Pro | Home Services Guru`}
+  description={`${s.short} One free call connects you with a local ${lower} pro.`}
+  phone={s.phone}
+  phoneDisplay={s.phoneDisplay}
+  serviceName={s.name}
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <Image
+      src={s.heroImage}
+      alt=""
+      class="hero-bg"
+      widths={[640, 1024, 1600, 2000]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="wrap hero-inner">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/#services">Services</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">{s.name}</span>
+      </nav>
+      <span class="badge"><Icon name={s.icon} size={18} /> {s.emergency ? "Emergency help" : "Local specialists"}</span>
+      <h1>{s.name} help, <span class="hl">fast.</span></h1>
+      <p class="lede">{s.help || s.short}</p>
+      <div class="hero-cta">
+        <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} size="lg" />
+        <span class="free"><Icon name="check" size={18} /> Free to call · No obligation</span>
+      </div>
+      <ul class="chips">
+        <li><Icon name="handshake" size={18} /> Any size job</li>
+        <li><Icon name="clock" size={18} /> Matched in minutes</li>
+        <li><Icon name="pin" size={18} /> Local to you</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="wrap intro-grid">
+      <div>
+        <span class="eyebrow">{s.name} near you</span>
+        <h2>{s.headline.replace(/\s+–.*$/, "")}</h2>
+        <p class="lede">{s.intro}</p>
+        {
+          s.benefits.length > 0 && (
+            <ul class="check-list">
+              {s.benefits.map((b) => (
+                <li>
+                  <Icon name="check" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+      <figure class="feature">
+        <Image src={s.featureImage} alt="" widths={[480, 720, 960]} sizes="(max-width: 860px) 100vw, 520px" />
+        {
+          s.phone && (
+            <figcaption>
+              <span>Talk to a {lower} pro</span>
+              <a href={`tel:+${s.phone}`}>{s.phoneDisplay}</a>
+            </figcaption>
+          )
+        }
+      </figure>
+    </div>
+  </section>
+
+  <!-- Jobs -->
+  {
+    s.jobs.length > 0 && (
+      <section class="section jobs">
+        <div class="wrap">
+          <div class="section-head center">
+            <span class="eyebrow">What we can help with</span>
+            <h2>From small fixes to big projects.</h2>
+          </div>
+          <ul class="job-grid">
+            {s.jobs.map((j) => (
+              <li>
+                <Icon name={s.icon} size={22} />
+                <span>{j}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="center-cta">
+            <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} label="Call" />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Why -->
+  {
+    s.reasons.length > 0 && (
+      <section class="section">
+        <div class="wrap why-grid">
+          <div class="section-head">
+            <span class="eyebrow">Why we're different</span>
+            <h2>Local pros, found for you.</h2>
+            <p class="lede">{s.why}</p>
+          </div>
+          <ul class="reason-list">
+            {s.reasons.slice(0, 4).map((r) => (
+              <li>
+                <Icon name="check" size={24} />
+                <div>
+                  <h3>{r.title}</h3>
+                  {r.text && <p>{r.text}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <HowItWorks serviceName={s.name} />
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap faq-grid">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>{s.name} questions, answered.</h2>
+        <p class="lede">Still not sure? Call and ask. There's no obligation.</p>
+        <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} variant="dark" />
+      </div>
+      <Faq items={s.faq} />
+    </div>
+  </section>
+
+  <!-- Guides + related -->
+  <section class="section more">
+    <div class="wrap">
+      {
+        serviceGuides.length > 0 && (
+          <div class="more-block">
+            <h2 class="more-title">{s.name} guides</h2>
+            <div class="guide-grid">
+              {serviceGuides.map((g) => <GuideCard guide={g} />)}
+            </div>
+          </div>
+        )
+      }
+      <div class="more-block">
+        <h2 class="more-title">{s.emergency ? "Other emergency services" : "Related services"}</h2>
+        <div class="related-grid">
+          {related.map((o) => <ServiceCard service={o} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    color: #fff;
+    padding-block: clamp(28px, 4vw, 40px) clamp(56px, 8vw, 96px);
+    overflow: hidden;
+  }
+
+  .hero :global(.hero-bg) {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgb(13 25 38 / 92%) 0%, rgb(13 25 38 / 78%) 45%, rgb(13 25 38 / 30%) 100%);
+  }
+
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: #c8d3dd;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+
+  .crumbs a {
+    color: #c8d3dd;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 12%);
+    border: 1px solid rgb(255 255 255 / 20%);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    color: #fff;
+    max-width: 14ch;
+  }
+
+  .hl {
+    color: var(--orange);
+  }
+
+  .hero .lede {
+    color: #dfe7ee;
+    max-width: 52ch;
+    margin-bottom: 28px;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 22px;
+  }
+
+  .free {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #dfe7ee;
+  }
+
+  .free :global(svg) {
+    color: var(--yellow);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #dfe7ee;
+  }
+
+  .chips li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .chips :global(svg) {
+    color: var(--sky);
+  }
+
+  /* Intro */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
+  }
+
+  .intro-grid .lede {
+    margin-bottom: 28px;
+  }
+
+  .feature {
+    position: relative;
+    margin: 0;
+  }
+
+  .feature img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 28px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .feature figcaption {
+    position: absolute;
+    left: -24px;
+    bottom: 28px;
+    padding: 16px 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .feature figcaption span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .feature figcaption a {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--orange-ink);
+    text-decoration: none;
+  }
+
+  /* Jobs */
+  .jobs {
+    background: var(--cream);
+  }
+
+  .job-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .job-grid li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-weight: 650;
+    color: var(--ink);
+  }
+
+  .job-grid :global(svg) {
+    flex: none;
+    color: var(--orange-strong);
+  }
+
+  .center-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  /* Why */
+  .why-grid,
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+
+  .reason-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .reason-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .reason-list :global(svg) {
+    color: var(--orange-strong);
+    margin-top: 2px;
+  }
+
+  .reason-list h3 {
+    margin-bottom: 4px;
+  }
+
+  .reason-list p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .faq-grid .lede {
+    margin-bottom: 24px;
+  }
+
+  /* More */
+  .more {
+    padding-top: 0;
+  }
+
+  .more-block + .more-block {
+    margin-top: 64px;
+  }
+
+  .more-title {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  @media (max-width: 860px) {
+    .intro-grid,
+    .why-grid,
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+    .feature img {
+      aspect-ratio: 4 / 3;
+    }
+    .feature figcaption {
+      left: 16px;
+      bottom: 16px;
+    }
+    .guide-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero::before {
+      background: linear-gradient(180deg, rgb(13 25 38 / 80%), rgb(13 25 38 / 90%));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-cta :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>

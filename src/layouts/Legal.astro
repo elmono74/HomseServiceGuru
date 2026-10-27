@@ -1,0 +1,94 @@
+---
+import Base from "./Base.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  html: string;
+}
+
+const { title, description, html } = Astro.props;
+---
+
+<Base title={`${title} | Home Services Guru`} description={description}>
+  <section class="legal-hero">
+    <div class="wrap narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">{title}</span>
+      </nav>
+      <h1>{title}</h1>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <article class="wrap narrow prose" set:html={html} />
+  </section>
+</Base>
+
+<style>
+  .narrow {
+    max-width: 760px;
+  }
+
+  .legal-hero {
+    background: var(--cream);
+    padding-block: 40px 48px;
+  }
+
+  .crumbs {
+    display: flex;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .crumbs a {
+    color: var(--muted);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    margin: 0;
+  }
+
+  .legal-body {
+    padding-block: 48px clamp(64px, 9vw, 112px);
+  }
+
+  .prose :global(h2) {
+    font-size: 1.5rem;
+    margin: 2.2em 0 0.6em;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.2rem;
+    margin: 2em 0 0.5em;
+  }
+
+  .prose :global(> :first-child) {
+    margin-top: 0;
+  }
+
+  .prose :global(p),
+  .prose :global(li) {
+    color: var(--text);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.3em;
+    margin: 0 0 1.2em;
+    display: grid;
+    gap: 6px;
+  }
+
+  .prose :global(li::marker) {
+    color: var(--orange-strong);
+  }
+
+  .prose :global(a) {
+    color: var(--navy);
+    text-underline-offset: 3px;
+  }
+</style>

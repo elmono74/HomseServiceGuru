@@ -1,0 +1,498 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import ServicePicker from "../components/ServicePicker.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import GuideCard from "../components/GuideCard.astro";
+import portrait from "../assets/guru-portrait.png";
+import mascot from "../assets/guru-mascot.png";
+import { services, emergencyServices } from "../data/services";
+import { guides } from "../data/guides";
+
+const reasons = [
+  { icon: "clock", title: "Fast connections", text: "We match you with a qualified local specialist in minutes, not days." },
+  { icon: "pin", title: "Local professionals", text: "We connect you with pros who work in your area and know your community." },
+  { icon: "handshake", title: "One call, every job", text: "From a leaky faucet to a new roof, one number gets you the right pro." },
+  { icon: "wallet", title: "Free for homeowners", text: "Calling us costs nothing. You agree on price directly with the pro." },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Home Services Guru",
+    url: "https://homeservices.guru/",
+    logo: "https://homeservices.guru/favicon.png",
+  },
+];
+---
+
+<Base
+  title="Home Services Guru | Find a Trusted Local Pro in One Call"
+  description="One free call connects you with a local pro for plumbing, HVAC, electrical, roofing, pest control, remodeling and more."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Home Services Guru</span>
+        <h1>A trusted local pro, <span class="hl">one call away.</span></h1>
+        <p class="lede">
+          Skip the endless searching. Tell us what's broken and we'll connect you with a local
+          specialist near you, usually in minutes.
+        </p>
+        <ServicePicker />
+      </div>
+
+      <div class="hero-art">
+        <div class="portrait">
+          <Image
+            src={portrait}
+            alt="Smiling handyman in an orange hard hat with arms crossed"
+            widths={[360, 540, 720]}
+            sizes="(max-width: 860px) 70vw, 460px"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="float f1"><Icon name="clock" size={20} /> Connected in minutes</div>
+        <div class="float f2"><Icon name="pin" size={20} /> Local to you</div>
+        <div class="float f3"><Icon name="handshake" size={20} /> Any size job</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency strip -->
+  <section class="emergency" aria-labelledby="emergency-title">
+    <div class="wrap em-grid">
+      <div>
+        <h2 id="emergency-title"><Icon name="siren" size={26} /> Home emergency?</h2>
+        <p>Burst pipe, no heat, power out, water on the floor: call now and get a pro on the way.</p>
+      </div>
+      <ul>
+        {
+          emergencyServices.map((s) => (
+            <li>
+              <a href={s.phone ? `tel:+${s.phone}` : `/services/${s.slug}/`}>
+                <Icon name={s.icon} size={22} />
+                <span>
+                  <strong>{s.name}</strong>
+                  <small>{s.phoneDisplay ?? "Request a callback"}</small>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Our services</span>
+        <h2>Whatever the job, we know a pro.</h2>
+        <p class="lede">
+          {services.length} home services, one network of local specialists. Pick yours to see how we can help.
+        </p>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => <ServiceCard service={s} />)}
+      </div>
+    </div>
+  </section>
+
+  <HowItWorks />
+
+  <!-- Why us -->
+  <section class="section why">
+    <div class="wrap why-grid">
+      <div class="section-head">
+        <span class="eyebrow">Why homeowners call us</span>
+        <h2>The easy way to find someone you can trust.</h2>
+        <p class="lede">
+          Online directories leave you sorting through ads and reviews. We do the searching so you can get
+          back to your day.
+        </p>
+      </div>
+      <ul class="reasons">
+        {
+          reasons.map((r) => (
+            <li>
+              <span class="r-icon"><Icon name={r.icon} size={24} /></span>
+              <h3>{r.title}</h3>
+              <p>{r.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Guides -->
+  <section class="section guides">
+    <div class="wrap">
+      <div class="guides-head">
+        <div class="section-head">
+          <span class="eyebrow">Home guides</span>
+          <h2>Fix it, prevent it, or know when to call.</h2>
+        </div>
+        <a class="btn btn-ghost" href="/blog/">All guides <Icon name="arrow" /></a>
+      </div>
+      <div class="guides-grid">
+        {guides.map((g) => <GuideCard guide={g} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cta">
+    <div class="wrap cta-box">
+      <Image src={mascot} alt="" width={220} class="cta-guru" />
+      <div>
+        <h2>Ready when you are.</h2>
+        <p>Choose your service and talk to a local pro today. It's free to call.</p>
+      </div>
+      <a class="btn btn-light btn-lg" href="#find-a-pro"><Icon name="phone-call" /> Find my pro</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(1200px 500px at 85% 10%, #fff7ef 0, transparent 60%),
+      var(--cream);
+    padding-block: clamp(40px, 7vw, 88px) clamp(56px, 8vw, 96px);
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+
+  .hl {
+    color: var(--orange-strong);
+  }
+
+  .hero-copy .lede {
+    margin-bottom: 28px;
+  }
+
+  .hero-art {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 460px);
+  }
+
+  .portrait {
+    border-radius: 240px 240px 28px 28px;
+    overflow: hidden;
+    background: var(--sand);
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4 / 5;
+  }
+
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 15%;
+  }
+
+  .float {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .float :global(svg) {
+    color: var(--orange-strong);
+  }
+
+  .f1 {
+    top: 18%;
+    left: -14%;
+  }
+
+  .f2 {
+    top: 46%;
+    right: -4%;
+  }
+
+  .f3 {
+    bottom: 10%;
+    left: -6%;
+  }
+
+  /* Emergency */
+  .emergency {
+    background: var(--navy);
+    color: #dbe7f0;
+    padding-block: 36px;
+  }
+
+  .em-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .emergency h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+  }
+
+  .emergency h2 :global(svg) {
+    color: var(--yellow);
+  }
+
+  .emergency p {
+    margin: 0;
+  }
+
+  .emergency ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .emergency a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgb(255 255 255 / 8%);
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid rgb(255 255 255 / 12%);
+    transition: background-color 0.15s ease;
+  }
+
+  .emergency a:hover {
+    background: rgb(255 255 255 / 15%);
+  }
+
+  .emergency a :global(svg) {
+    flex: none;
+    color: var(--sky);
+  }
+
+  .emergency strong,
+  .emergency small {
+    display: block;
+    line-height: 1.3;
+  }
+
+  .emergency strong {
+    font-family: var(--font-display);
+  }
+
+  .emergency small {
+    font-size: 0.85rem;
+    color: #b8c9d6;
+    white-space: nowrap;
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 14px;
+  }
+
+  /* Why */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+
+  .reasons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .reasons li {
+    padding: 26px;
+    border-radius: var(--radius);
+    background: var(--cream);
+  }
+
+  .r-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #fff;
+    color: var(--orange-ink);
+    margin-bottom: 16px;
+  }
+
+  .reasons p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  /* Guides */
+  .guides {
+    padding-top: 0;
+  }
+
+  .guides-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  /* CTA */
+  .cta {
+    padding-bottom: clamp(64px, 9vw, 112px);
+  }
+
+  .cta-box {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 28px 40px;
+    border-radius: 28px;
+    background: linear-gradient(120deg, var(--orange-strong), var(--orange));
+    color: #fff;
+  }
+
+  .cta-box h2 {
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .cta-box p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .cta-box :global(.cta-guru) {
+    width: 150px;
+    margin-block: -48px -20px;
+    filter: drop-shadow(0 12px 24px rgb(0 0 0 / 20%));
+  }
+
+  @media (max-width: 1080px) {
+    .emergency ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid,
+    .em-grid,
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-art {
+      width: min(72%, 340px);
+    }
+    /* Keep the badges below the face on narrow screens */
+    .f1 {
+      top: 50%;
+      left: -14%;
+    }
+    .f2 {
+      top: 67%;
+      right: -10%;
+    }
+    .f3 {
+      bottom: 5%;
+      left: -8%;
+    }
+    .guides-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-box {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+      padding: 32px 24px;
+    }
+    .cta-box :global(.cta-guru) {
+      margin: -80px 0 0;
+      width: 130px;
+    }
+    .cta {
+      padding-top: 40px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .reasons {
+      grid-template-columns: 1fr;
+    }
+    .emergency ul {
+      grid-template-columns: 1fr;
+    }
+    .guides-head {
+      flex-direction: column;
+      align-items: start;
+    }
+    .guides-head .btn {
+      margin-top: -24px;
+      margin-bottom: 32px;
+    }
+    .float {
+      font-size: 0.8rem;
+      padding: 8px 12px;
+    }
+    .f1 {
+      left: -12%;
+    }
+    .f2 {
+      right: -10%;
+    }
+  }
+</style>

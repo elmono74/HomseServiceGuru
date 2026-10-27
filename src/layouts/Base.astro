@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CallBar from "../components/CallBar.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  phone?: string | null;
+  phoneDisplay?: string;
+  serviceName?: string;
+  schema?: object[];
+}
+
+const { title, description, phone, phoneDisplay, serviceName, schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Home Services Guru" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#ff6b00" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Header phone={phone} phoneDisplay={phoneDisplay} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <CallBar phone={phone} phoneDisplay={phoneDisplay} serviceName={serviceName} />
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: 12px;
+    top: -60px;
+    z-index: 100;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .skip:focus {
+    top: 12px;
+  }
+</style>

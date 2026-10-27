@@ -1,0 +1,12 @@
+---
+import Legal from "../layouts/Legal.astro";
+// Copied from the old site by homeservices-build/extract_legal.py, then hand-edited
+// (typos fixed). Don't re-run the extractor.
+import html from "../content/legal/privacy.html?raw";
+---
+
+<Legal
+  title="Privacy Policy"
+  description="How Home Services Guru collects, uses and protects information about visitors to its website."
+  html={html}
+/>

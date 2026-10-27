@@ -1,0 +1,128 @@
+---
+import { Image } from "astro:assets";
+import mascot from "../assets/guru-mascot.png";
+
+interface Props {
+  serviceName?: string;
+}
+
+const { serviceName } = Astro.props;
+const steps = [
+  {
+    title: "Tell us what you need",
+    text: serviceName
+      ? `Call the number on this page and tell us about your ${serviceName.toLowerCase()} problem.`
+      : "Pick your service and call the number. It's free, and there's no form to fill out.",
+  },
+  {
+    title: "We find your pro",
+    text: "We connect you with local professionals who can tackle any size job.",
+  },
+  {
+    title: "Get it done",
+    text: "Talk to a pro directly or schedule a home visit, and get your home back in order.",
+  },
+];
+---
+
+<section id="how-it-works" class="how section">
+  <div class="wrap layout">
+    <div class="guru">
+      <Image src={mascot} alt="The Home Services Guru mascot: a handyman in a hard hat, meditating" width={420} />
+    </div>
+    <div>
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Help is one call away. The guru does the searching.</h2>
+      </div>
+      <ol class="steps">
+        {
+          steps.map((s, i) => (
+            <li>
+              <span class="num" aria-hidden="true">{i + 1}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--cream);
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
+  }
+
+  .guru {
+    background: radial-gradient(circle at 50% 55%, #fff 0 52%, transparent 53%);
+    border-radius: 50%;
+    padding: 6%;
+  }
+
+  .guru img {
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+
+  .steps li {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 18px;
+    padding: 22px 24px;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .num {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--orange-soft);
+    color: var(--orange-ink);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .guru {
+      max-width: 260px;
+      margin-inline: auto;
+    }
+  }
+</style>

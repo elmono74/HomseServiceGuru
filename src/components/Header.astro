@@ -1,0 +1,190 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+import Icon from "./Icon.astro";
+import CallButton from "./CallButton.astro";
+
+interface Props {
+  phone?: string | null;
+  phoneDisplay?: string;
+}
+
+const { phone, phoneDisplay } = Astro.props;
+const nav = [
+  { href: "/#services", label: "Services" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/blog/", label: "Guides" },
+  { href: "/about-us/", label: "About" },
+];
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="brand" aria-label="Home Services Guru home">
+      <Image src={logo} alt="" width={132} height={76} loading="eager" />
+    </a>
+
+    <nav aria-label="Main">
+      <ul>
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="actions">
+      {
+        phone ? (
+          <CallButton phone={phone} phoneDisplay={phoneDisplay} label="" class="header-call" />
+        ) : (
+          <a class="btn btn-call header-call" href="/#find-a-pro">
+            <Icon name="phone-call" />
+            <span>Find a pro</span>
+          </a>
+        )
+      }
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+        <Icon name="menu" />
+        <span class="visually-hidden">Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <ul class="wrap">
+      {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      <li><a href="/contact-us/">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    if (menu) menu.hidden = open;
+  });
+  menu?.addEventListener("click", (e) => {
+    if ((e.target as HTMLElement).closest("a")) {
+      toggle?.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+    }
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgb(255 255 255 / 92%);
+    backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: 1px solid rgb(21 28 36 / 7%);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-height: 76px;
+  }
+
+  .brand img {
+    width: 112px;
+    height: auto;
+  }
+
+  nav {
+    margin-left: auto;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-size: 0.98rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--orange-ink);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .actions :global(.header-call) {
+    min-height: 46px;
+    font-size: 0.98rem;
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: none;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--cream);
+    color: var(--ink);
+    cursor: pointer;
+    place-items: center;
+  }
+
+  .mobile-menu {
+    border-top: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    padding-block: 8px 16px;
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 14px 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (max-width: 860px) {
+    nav {
+      display: none;
+    }
+    .actions {
+      margin-left: auto;
+    }
+    .menu-toggle {
+      display: grid;
+    }
+    .brand img {
+      width: 92px;
+    }
+    .bar {
+      min-height: 64px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* the sticky call bar takes over on phones */
+    .actions :global(.header-call) {
+      display: none;
+    }
+  }
+</style>

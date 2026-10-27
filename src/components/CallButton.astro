@@ -1,0 +1,31 @@
+---
+import Icon from "./Icon.astro";
+import { telHref } from "../data/services";
+
+// A service's tracking number, or a callback link when the service has no number yet.
+interface Props {
+  phone?: string | null;
+  phoneDisplay?: string;
+  label?: string;
+  size?: "md" | "lg";
+  variant?: "call" | "light" | "dark";
+  class?: string;
+}
+
+const { phone, phoneDisplay, label, size = "md", variant = "call", class: className } = Astro.props;
+const classes = ["btn", `btn-${variant}`, size === "lg" && "btn-lg", className].filter(Boolean).join(" ");
+---
+
+{
+  phone ? (
+    <a class={classes} href={telHref(phone)} data-call={phone}>
+      <Icon name="phone-call" />
+      <span>{label ?? "Call"} {phoneDisplay}</span>
+    </a>
+  ) : (
+    <a class={classes} href="/contact-us/">
+      <Icon name="phone" />
+      <span>Request a callback</span>
+    </a>
+  )
+}

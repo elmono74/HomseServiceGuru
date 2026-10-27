@@ -1,0 +1,124 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+import { services } from "../data/services";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap grid">
+    <div class="about">
+      <div class="logo-chip">
+        <Image src={logo} alt="Home Services Guru" width={140} height={80} />
+      </div>
+      <p>
+        One call connects you with a local pro for the job, from plumbing and
+        HVAC to roofing and remodeling.
+      </p>
+    </div>
+
+    <div>
+      <h2>Services</h2>
+      <ul class="cols">
+        {services.map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/about-us/">About us</a></li>
+        <li><a href="/blog/">Guides</a></li>
+        <li><a href="/contact-us/">Contact</a></li>
+        <li><a href="/privacy-policy-3/">Privacy policy</a></li>
+        <li><a href="/term-and-conditions/">Terms &amp; conditions</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap legal">
+    <p>
+      Home Services Guru is a free referral service. We connect callers with independent, third-party
+      service providers in their area. Providers set their own prices and are responsible for the work
+      they perform.
+    </p>
+    <p>© {year} Home Services Guru. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: #c9d1d9;
+    padding-block: 72px 32px;
+    font-size: 0.95rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.6fr 0.8fr;
+    gap: 48px;
+  }
+
+  .logo-chip {
+    display: inline-block;
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+  }
+
+  .logo-chip img {
+    width: 120px;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+
+  .cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  a {
+    color: #c9d1d9;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .legal {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(255 255 255 / 12%);
+    font-size: 0.82rem;
+    color: #9aa5b1;
+  }
+
+  .legal p {
+    max-width: 90ch;
+  }
+
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+</style>

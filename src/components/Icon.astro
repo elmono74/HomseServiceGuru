@@ -1,0 +1,78 @@
+---
+import Wrench from "@lucide/astro/icons/wrench";
+import ThermometerSun from "@lucide/astro/icons/thermometer-sun";
+import Zap from "@lucide/astro/icons/zap";
+import Droplets from "@lucide/astro/icons/droplets";
+import House from "@lucide/astro/icons/house";
+import CloudRain from "@lucide/astro/icons/cloud-rain";
+import Bug from "@lucide/astro/icons/bug";
+import WashingMachine from "@lucide/astro/icons/washing-machine";
+import Bath from "@lucide/astro/icons/bath";
+import CookingPot from "@lucide/astro/icons/cooking-pot";
+import TreePine from "@lucide/astro/icons/tree-pine";
+import BrickWall from "@lucide/astro/icons/brick-wall";
+import Warehouse from "@lucide/astro/icons/warehouse";
+import Container from "@lucide/astro/icons/container";
+import ShieldCheck from "@lucide/astro/icons/shield-check";
+import Package from "@lucide/astro/icons/package";
+import Phone from "@lucide/astro/icons/phone";
+import PhoneCall from "@lucide/astro/icons/phone-call";
+import Check from "@lucide/astro/icons/circle-check-big";
+import ArrowRight from "@lucide/astro/icons/arrow-right";
+import Clock from "@lucide/astro/icons/clock";
+import BadgeCheck from "@lucide/astro/icons/badge-check";
+import MapPin from "@lucide/astro/icons/map-pin";
+import Siren from "@lucide/astro/icons/siren";
+import HeartHandshake from "@lucide/astro/icons/heart-handshake";
+import Wallet from "@lucide/astro/icons/wallet";
+import Menu from "@lucide/astro/icons/menu";
+import X from "@lucide/astro/icons/x";
+import ChevronDown from "@lucide/astro/icons/chevron-down";
+
+const ICONS = {
+  // services
+  pipe: Wrench,
+  thermometer: ThermometerSun,
+  bolt: Zap,
+  droplet: Droplets,
+  roof: House,
+  spore: CloudRain,
+  bug: Bug,
+  washer: WashingMachine,
+  bath: Bath,
+  kitchen: CookingPot,
+  tree: TreePine,
+  bricks: BrickWall,
+  garage: Warehouse,
+  tank: Container,
+  shield: ShieldCheck,
+  box: Package,
+  // UI
+  phone: Phone,
+  "phone-call": PhoneCall,
+  check: Check,
+  arrow: ArrowRight,
+  clock: Clock,
+  badge: BadgeCheck,
+  pin: MapPin,
+  siren: Siren,
+  handshake: HeartHandshake,
+  wallet: Wallet,
+  menu: Menu,
+  close: X,
+  chevron: ChevronDown,
+};
+
+export type IconName = keyof typeof ICONS;
+
+interface Props {
+  name: IconName | string;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 24, class: className } = Astro.props;
+const Cmp = ICONS[name as IconName] ?? Wrench;
+---
+
+<Cmp size={size} class={className} aria-hidden="true" stroke-width={1.9} />

@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import mascot from "../assets/guru-mascot.png";
+---
+
+<Base title="Page Not Found | Home Services Guru" description="The page you're looking for doesn't exist.">
+  <section class="section nf">
+    <div class="wrap">
+      <Image src={mascot} alt="" width={220} />
+      <h1>Even the guru can't find this page.</h1>
+      <p class="lede">It may have moved, or the link might be out of date.</p>
+      <div class="actions">
+        <a class="btn btn-call" href="/#find-a-pro"><Icon name="phone-call" /> Find a local pro</a>
+        <a class="btn btn-ghost" href="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .nf img {
+    width: 180px;
+    margin: 0 auto 24px;
+  }
+
+  .nf h1 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+  }
+
+  .nf .lede {
+    margin-inline: auto;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+</style>

@@ -1,0 +1,12 @@
+---
+import Legal from "../layouts/Legal.astro";
+// Copied from the old site by homeservices-build/extract_legal.py, then hand-edited
+// (governing-law clause and comments section removed, typos fixed). Don't re-run the extractor.
+import html from "../content/legal/terms.html?raw";
+---
+
+<Legal
+  title="Terms and Conditions"
+  description="The terms and conditions for using the Home Services Guru website."
+  html={html}
+/>

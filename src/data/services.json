@@ -1,0 +1,1101 @@
+[
+  {
+    "slug": "plumbing",
+    "oldSlug": "plumbing-services",
+    "name": "Plumbing",
+    "icon": "pipe",
+    "emergency": true,
+    "headline": "Plumbing Services Near You – Fast, Reliable, and Affordable",
+    "help": "Need a plumber fast? Call Home Service Guru today and we’ll connect you with a trusted local plumbing expert right away.",
+    "intro": "Plumbing problems can disrupt your home and cause costly damage if not fixed quickly. At Home Service Guru, we make it simple to connect with trusted local plumbers who can handle everything from small leaks to major repairs. With one quick call, we’ll link you to the right plumbing expert in your area.",
+    "benefits": [
+      "Fast connection to reliable local plumbing specialists",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large problems",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Leak Detection & Repair",
+      "Clogged Drains & Sewer Cleaning",
+      "Water Heater Repair & Replacement",
+      "Toilet & Faucet Repair/Installation",
+      "Pipe Repair & Replacement",
+      "Emergency Plumbing Services",
+      "Garbage Disposal Repair & Installation",
+      "Sump Pump Repair & Replacement",
+      "Water Filtration & Softener Systems"
+    ],
+    "why": "Finding a reliable plumber can be frustrating and time-consuming. That’s why Home Service Guru partners only with local plumbing professionals who deliver dependable service.",
+    "reasons": [
+      {
+        "title": "Local Specialists",
+        "text": "Work with plumbers who know your community and respond fast."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "Experienced, dependable local plumbers."
+      },
+      {
+        "title": "Affordable Solutions",
+        "text": "Quality service that won’t drain your wallet."
+      },
+      {
+        "title": "Comprehensive Plumbing Help",
+        "text": "From emergency fixes to installations and upgrades."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do you handle emergency plumbing issues?",
+        "a": "Yes. We can connect you with local plumbers available for urgent needs like burst pipes, severe leaks, or clogged drains."
+      },
+      {
+        "q": "What types of plumbing jobs do your providers handle?",
+        "a": "Everything from small repairs like fixing faucets to major services like water heater replacement or sewer line cleaning."
+      },
+      {
+        "q": "Are the plumbers licensed and insured?",
+        "a": "The plumbers we connect you with are independent local businesses. Licensing rules vary by state, so ask your pro about licensing and insurance before work begins."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of searching on my own?",
+        "a": "We save you time and hassle by connecting you immediately to a local plumber."
+      }
+    ],
+    "phone": "18443246359",
+    "hero": "plumbing-hero.jpg",
+    "feature": "plumbing-feature.jpg",
+    "phoneDisplay": "(844) 324-6359"
+  },
+  {
+    "slug": "hvac",
+    "oldSlug": "hvac",
+    "name": "Heating & Cooling",
+    "icon": "thermometer",
+    "emergency": true,
+    "headline": "HVAC Services Near You – Fast, Reliable, and Affordable",
+    "help": "Call today to talk to a local HVAC specialist.",
+    "intro": "When your heating or cooling system breaks down, you don’t have time to waste. At Home Service Guru, we make it easy to connect with trusted local HVAC specialists who can get the job done right the first time. Whether it’s an emergency repair, seasonal maintenance, or a full system installation, we’ll help you find the right professional quickly.",
+    "benefits": [
+      "Quick Response",
+      "Trusted Specialists",
+      "Full HVAC Support",
+      "Affordable Solutions",
+      "Air Conditioning Repair & Installation",
+      "Heating & Furnace Repair"
+    ],
+    "jobs": [
+      "Local Experts Only",
+      "No Endless Searching",
+      "Fast Connections",
+      "Peace of Mind"
+    ],
+    "why": "Finding the right HVAC provider on your own can be stressful and time-consuming. That’s where Home Service Guru comes in. Unlike big national directories or random online searches, we work exclusively with local HVAC specialists in your community.",
+    "reasons": [],
+    "faq": [
+      {
+        "q": "How quickly can I get connected with an HVAC specialist?",
+        "a": "As soon as you call us, we’ll connect you right away with a trusted local HVAC provider. Most customers are scheduled for service the same day or next day."
+      },
+      {
+        "q": "Are the HVAC pros licensed?",
+        "a": "The HVAC pros we connect you with are independent local businesses. Licensing rules vary by state, so ask your pro about licensing and insurance before work begins."
+      },
+      {
+        "q": "What types of HVAC services can I request through Home Service Guru?",
+        "a": "Our network covers everything from air conditioning and furnace repairs to full system installations, seasonal tune-ups, and indoor air quality solutions."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of searching online myself?",
+        "a": "We save you time, stress, and guesswork. Instead of sifting through dozens of listings, reviews, and ads, one call to us connects you directly to a trusted local HVAC pro."
+      }
+    ],
+    "phone": "18443663415",
+    "hero": "hvac-hero.jpg",
+    "feature": "hvac-feature.png",
+    "phoneDisplay": "(844) 366-3415"
+  },
+  {
+    "slug": "electrical",
+    "oldSlug": "electrical-repair-services",
+    "name": "Electrical",
+    "icon": "bolt",
+    "emergency": true,
+    "headline": "Find a Trusted Local Electrician Today",
+    "help": "Call today to talk to a local Electrician.",
+    "intro": "When electrical issues strike, you need a professional you can rely on. At Home Service Guru, we make it simple to connect with local electricians in your area. Whether it’s a small repair, an emergency outage, or a major installation, one quick call to us saves you the time and stress of searching on your own.",
+    "benefits": [
+      "Fast connection to local electricians",
+      "Affordable and transparent service options",
+      "Emergency support when you need it most",
+      "Local professionals who know your area",
+      "Save time—no endless online searches",
+      "Peace of mind knowing the job will be done right"
+    ],
+    "jobs": [
+      "Electrical troubleshooting & repairs",
+      "Panel upgrades & circuit breaker replacements",
+      "Indoor & outdoor lighting installation",
+      "Ceiling fan & appliance wiring",
+      "Whole-home rewiring projects",
+      "Emergency electrical services",
+      "Outlet, switch, and fixture installation",
+      "Generator installation & maintenance"
+    ],
+    "why": "At Home Service Guru, we don’t just list contractors and leave you to figure it out. We personally connect you with local electricians who are experienced and ready to help. Unlike large directories or faceless search engines, we focus on your local community, making sure you get service that’s not only professional but also convenient and reliable.",
+    "reasons": [],
+    "faq": [
+      {
+        "q": "How quickly can I get connected with an electrician?",
+        "a": "Most customers are connected with a local electrician immediately, and service can often be scheduled the same day."
+      },
+      {
+        "q": "Are the electricians licensed?",
+        "a": "The electricians we connect you with are independent local businesses. Licensing rules vary by state, so ask your pro about licensing and insurance before work begins."
+      },
+      {
+        "q": "Can I get help with small jobs, like installing outlets or ceiling fans?",
+        "a": "Absolutely. Our electricians handle everything from minor repairs and installations to large projects and emergencies."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of hiring someone directly?",
+        "a": "We save you time, hassle, and uncertainty. With one call, you’re instantly connected to a trusted local electrician—no need to sift through reviews or take risks with unreliable contractors."
+      }
+    ],
+    "phone": "18443650087",
+    "hero": "electrical-hero.jpg",
+    "feature": "electrical-feature.jpg",
+    "phoneDisplay": "(844) 365-0087"
+  },
+  {
+    "slug": "water-damage",
+    "oldSlug": "water-damage",
+    "name": "Water Damage",
+    "icon": "droplet",
+    "emergency": true,
+    "headline": "Common Water Damage Services",
+    "help": "Ready to start your project? Call Home Service Guru today and get connected with a local concrete specialist you can trust.",
+    "intro": "When water damage strikes, you don’t have time to search through dozens of companies. Home Service Guru connects you instantly with local restoration experts who can respond fast and get the job done right.",
+    "benefits": [],
+    "jobs": [
+      "Trusted Local Providers",
+      "Fast Connections",
+      "Personalized Matches",
+      "No Guesswork",
+      "Peace of Mind"
+    ],
+    "why": "When water damage strikes, you don’t have time to search through dozens of companies. Home Service Guru connects you instantly with local restoration experts who can respond fast and get the job done right.",
+    "reasons": [
+      {
+        "title": "Local Emergency Experts",
+        "text": "Professionals in your area ready to respond"
+      },
+      {
+        "title": "Fast Connections",
+        "text": "One call gets you immediate help"
+      },
+      {
+        "title": "No Stress or Guesswork",
+        "text": "We’ve already found the right professionals for you"
+      },
+      {
+        "title": "Personalized Matches",
+        "text": "The right specialist for your specific situation"
+      },
+      {
+        "title": "Peace of Mind",
+        "text": "Reliable service when you need it most"
+      },
+      {
+        "title": "Emergency Water Extraction",
+        "text": "Remove standing water quickly to prevent further damage."
+      },
+      {
+        "title": "Drying & Dehumidification",
+        "text": "Thorough drying to protect walls, floors, and belongings."
+      },
+      {
+        "title": "Flood Damage Cleanup",
+        "text": "Professional cleanup after storms or major water events."
+      },
+      {
+        "title": "Leak Detection & Repair",
+        "text": "Identify and fix hidden water sources."
+      },
+      {
+        "title": "Mold Prevention & Remediation",
+        "text": "Stop mold growth before it becomes a serious issue."
+      },
+      {
+        "title": "Structural Drying & Repairs",
+        "text": "Restore damaged areas safely and effectively."
+      },
+      {
+        "title": "Sewage Cleanup",
+        "text": "Safe handling and cleanup of hazardous water situations."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How quickly should I act after water damage?",
+        "a": "Immediately. The sooner you address water damage, the less risk of structural issues and mold growth. We can connect you with a specialist right away."
+      },
+      {
+        "q": "Do your providers offer emergency services?",
+        "a": "Yes. Call us and we’ll connect you with a local specialist who handles emergency water damage restoration."
+      },
+      {
+        "q": "Will my insurance cover water damage restoration?",
+        "a": "It depends on the cause of the damage and your policy. Your restoration professional can help guide you through the process."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of contacting a company directly?",
+        "a": "We save you critical time by connecting you instantly with trusted local restoration experts, so you can act fast and protect your home."
+      }
+    ],
+    "phone": "18572012469",
+    "hero": "water-damage-hero.jpg",
+    "feature": "water-damage-feature.jpg",
+    "phoneDisplay": "(857) 201-2469"
+  },
+  {
+    "slug": "roofing",
+    "oldSlug": "roofing-services",
+    "name": "Roofing",
+    "icon": "roof",
+    "emergency": false,
+    "headline": "Roofing Services Near You – Protect Your Home with Local Experts",
+    "help": "Protect your home with a strong, reliable roof. Call Home Service Guru today and get connected to a trusted local roofing specialist.",
+    "intro": "Your roof is one of the most important parts of your home—it protects everything beneath it. Whether you need a small repair, a full roof replacement, or an inspection after a storm, Home Service Guru makes it easy to connect with trusted local roofing specialists . With one call, we’ll link you to reliable roofers who can get the job done right.",
+    "benefits": [
+      "Local Roofing Specialists",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large projects",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Roof Inspections",
+      "Roof Repair",
+      "Roof Replacement",
+      "Storm Damage Repair",
+      "Gutter Installation & Repair",
+      "Flat & Low-Slope Roofing",
+      "Emergency Roofing Services"
+    ],
+    "why": "Unlike big national chains or endless online directories, Home Service Guru only works with local remodeling experts. We do the work of finding dependable professionals so you don’t have to waste time comparing quotes, reading reviews, or worrying about unreliable contractors.",
+    "reasons": [
+      {
+        "title": "Qualified Local Roofers",
+        "text": "Only experienced professionals in your area."
+      },
+      {
+        "title": "Fast Connections",
+        "text": "One call links you to a roofer ready to help."
+      },
+      {
+        "title": "Personalized Matches",
+        "text": "The right roofing specialist for your specific needs."
+      },
+      {
+        "title": "Convenience First",
+        "text": "No searching, no guesswork, no stress."
+      },
+      {
+        "title": "Proven Results",
+        "text": "Trusted service that homeowners in your community rely on."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do you handle both residential and commercial roofing?",
+        "a": "Yes. Our providers service both homes and businesses with full repair and replacement options."
+      },
+      {
+        "q": "How do I know if my roof needs to be repaired or replaced?",
+        "a": "A local roofer will inspect your roof and give you honest recommendations based on its condition."
+      },
+      {
+        "q": "Are the roofers licensed and insured?",
+        "a": "The roofers we connect you with are independent local businesses. Licensing rules vary by state, so ask your pro about licensing and insurance before work begins."
+      },
+      {
+        "q": "Can I get emergency roof repairs after a storm?",
+        "a": "Absolutely. We’ll connect you with roofers who offer fast emergency service to protect your home from further damage."
+      }
+    ],
+    "phone": null,
+    "hero": "roofing-hero.jpg",
+    "feature": "roofing-feature.jpg"
+  },
+  {
+    "slug": "mold-remediation",
+    "oldSlug": "mold-remediation",
+    "name": "Mold Remediation",
+    "icon": "spore",
+    "emergency": false,
+    "headline": "Mold Remediation Specialists Near You; Fast, Safe, and Reliable",
+    "help": "Call today to talk to a local Mold Remediation Specialist.",
+    "intro": "Mold in your home isn’t just unsightly—it can affect your health and damage your property. That’s why it’s important to act fast. At Home Service Guru, we connect you instantly with local mold remediation specialists who can safely remove mold and help prevent it from coming back. One quick call saves you hours of searching and gives you peace of mind.",
+    "benefits": [
+      "Fast connection to local, trusted professionals",
+      "Safe and effective mold removal services",
+      "Affordable solutions tailored to your situation",
+      "Local professionals who know your area",
+      "Save time—no endless online searching",
+      "Peace of mind knowing your home is safe again"
+    ],
+    "jobs": [
+      "Mold inspection and testing",
+      "Safe mold removal and cleanup",
+      "Black mold remediation",
+      "Water damage and moisture control solutions",
+      "Air quality testing and improvement",
+      "Preventative treatments to stop future mold growth",
+      "Attic, basement, and crawl space remediation",
+      "Commercial and residential mold services"
+    ],
+    "why": "At Home Service Guru, we don’t just hand you a list of names and leave you guessing. We connect you directly with qualified local mold remediation experts who know how to handle mold problems safely and thoroughly. Unlike large directories or unreliable online searches, we keep it simple:",
+    "reasons": [
+      {
+        "title": "Local Specialists Only",
+        "text": "We work exclusively with trusted pros in your area."
+      },
+      {
+        "title": "No Guesswork",
+        "text": "Skip reading endless reviews or comparing quotes—we’ve done the searching for you."
+      },
+      {
+        "title": "One Call Solution",
+        "text": "You call us, and we connect you to the right mold remediation expert immediately."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How quickly can I get connected with a mold remediation specialist?",
+        "a": "Most customers are connected immediately, with same-day or next-day appointments often available."
+      },
+      {
+        "q": "Do your providers handle black mold removal?",
+        "a": "Yes. Our network includes specialists trained to safely remove black mold and restore healthy air quality in your home."
+      },
+      {
+        "q": "Can I just clean mold myself?",
+        "a": "Small surface mold can sometimes be cleaned, but most infestations require professional remediation to ensure the mold doesn’t spread or return."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of finding a provider myself?",
+        "a": "We save you the stress and risk of hiring the wrong company. With one call, we connect you directly to a trusted, local mold remediation expert who will get the job done right."
+      }
+    ],
+    "phone": "18555495113",
+    "hero": "mold-remediation-hero.jpg",
+    "feature": "mold-remediation-feature.jpg",
+    "phoneDisplay": "(855) 549-5113"
+  },
+  {
+    "slug": "pest-control",
+    "oldSlug": "pest-control-services",
+    "name": "Pest Control",
+    "icon": "bug",
+    "emergency": false,
+    "headline": "Pest Control Services Near You – Fast, Safe, and Reliable",
+    "help": "Don’t let pests take over your home. Call Home Service Guru today and get connected to a trusted local pest control specialist.",
+    "intro": "Unwanted pests in your home or business can create stress, health risks, and even property damage. At Home Service Guru, we make it easy to connect with trusted local pest control specialists who can eliminate the problem quickly and safely. Whether it’s ants, termites, rodents, or bed bugs, we’ll help you find the right pro fast.",
+    "benefits": [
+      "Fast connection to reliable local pest control specialists",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large problems",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Ant & Roach Control",
+      "Rodent Removal",
+      "Termite Treatment & Prevention",
+      "Bed Bug Extermination",
+      "Seasonal Pest Management",
+      "Mosquito Control",
+      "Spider Control",
+      "Flea & Tick Treatments",
+      "Wasp & Bee Removal"
+    ],
+    "why": "Finding a dependable pest control company can be overwhelming. With Home Service Guru, you don’t have to search through endless listings or gamble on unverified providers. We work exclusively with local pest control specialists to give you peace of mind.",
+    "reasons": [
+      {
+        "title": "Local Experts Only",
+        "text": "We connect you with remodelers who know your area and understand your needs."
+      },
+      {
+        "title": "One Call, One Connection",
+        "text": "Skip the hassle—our team links you instantly to the right pro."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "We connect you with local pest control pros who know your area."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How quickly can I get pest control service?",
+        "a": "We’ll connect you with a local provider immediately. In many cases, same-day or next-day service is available."
+      },
+      {
+        "q": "Are the treatments safe for children and pets?",
+        "a": "Yes. Our providers use safe, approved treatments designed to protect your home and family while eliminating pests."
+      },
+      {
+        "q": "Do I need ongoing pest control or just a one-time treatment?",
+        "a": "That depends on your situation. Our specialists can provide a one-time solution or set up regular maintenance to prevent future infestations."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of hiring a company directly?",
+        "a": "We save you time, stress, and risk by connecting you with local pest control experts."
+      }
+    ],
+    "phone": "18443663856",
+    "hero": "pest-control-hero.jpg",
+    "feature": "pest-control-feature.jpg",
+    "phoneDisplay": "(844) 366-3856"
+  },
+  {
+    "slug": "appliance-repair",
+    "oldSlug": "appliance-repair-services",
+    "name": "Appliance Repair",
+    "icon": "washer",
+    "emergency": false,
+    "headline": "Appliance Repair Services Near You – Fast, Reliable, and Affordable",
+    "help": "",
+    "intro": "When your appliances stop working, your whole routine is disrupted. At Home Service Guru, we make it simple to connect with trusted local appliance repair specialists who can get your appliances back up and running quickly. From refrigerators and ovens to washers and dryers, we’ll help you find the right expert fast.",
+    "benefits": [
+      "Refrigerator & Freezer Repair – Keep your food fresh and safe.",
+      "Oven, Stove & Range Repair – Get back to cooking without hassle.",
+      "Washer & Dryer Repair – Reliable laundry solutions when you need them most.",
+      "Dishwasher Repair – Ensure clean dishes without the stress.",
+      "Microwave & Small Appliance Repair – Quick fixes for everyday essentials.",
+      "Local Experts Only – Providers who know your area and respond fast."
+    ],
+    "jobs": [],
+    "why": "Trying to find a reliable appliance repair provider on your own can be frustrating. That’s why we work exclusively with local appliance repair specialists in your community.",
+    "reasons": [
+      {
+        "title": "No Endless Searching",
+        "text": "Skip the hassle of scrolling through countless websites and reviews."
+      },
+      {
+        "title": "Fast Connections",
+        "text": "One call links you directly to a trusted repair tech."
+      },
+      {
+        "title": "Peace of Mind",
+        "text": "All providers we work with are experienced and dependable."
+      },
+      {
+        "title": "Personalized Matches",
+        "text": "We connect you with the right pro for your specific repair or project, not just anyone."
+      },
+      {
+        "title": "Convenience First",
+        "text": "One quick call saves you hours of research, scheduling, and frustration."
+      },
+      {
+        "title": "Customer-Focused Support",
+        "text": "Our priority is making sure you get fast, dependable service and complete peace of mind."
+      },
+      {
+        "title": "Local Providers",
+        "text": "We connect you with local specialists who know your area."
+      },
+      {
+        "title": "Quick Service",
+        "text": "We connect you with local technicians who are ready to help."
+      },
+      {
+        "title": "Trusted Specialists",
+        "text": "Experienced providers who know how to fix all major appliance brands."
+      },
+      {
+        "title": "Affordable Solutions",
+        "text": "Quality repairs without overpriced service fees."
+      },
+      {
+        "title": "Comprehensive Repairs",
+        "text": "From small fixes to major appliance breakdowns."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How quickly can I get service?",
+        "a": "We’ll connect you with a local technician right away. In most cases, service is available the same day or next day."
+      },
+      {
+        "q": "Do you repair all major appliance brands?",
+        "a": "Yes. Our network includes technicians experienced with all major brands and models."
+      },
+      {
+        "q": "What if my appliance can’t be fixed?",
+        "a": "If repair isn’t possible, your technician can recommend replacement options and help guide you on the best next steps."
+      },
+      {
+        "q": "Why call Home Service Guru instead of hiring directly?",
+        "a": "We save you time and frustration by connecting you to a local appliance repair expert with just one call."
+      }
+    ],
+    "phone": "18333854109",
+    "hero": "appliance-repair-hero.jpg",
+    "feature": "appliance-repair-feature.jpg",
+    "phoneDisplay": "(833) 385-4109"
+  },
+  {
+    "slug": "bathroom-remodeling",
+    "oldSlug": "bathroom-remodeling-services",
+    "name": "Bathroom Remodeling",
+    "icon": "bath",
+    "emergency": false,
+    "headline": "Transform Your Bathroom with a Trusted Local Remodeler",
+    "help": "Call today to talk to a local Bathroom Remodeling Specialist.",
+    "intro": "Thinking about upgrading your bathroom? From simple updates to complete renovations, Home Service Guru makes it easy to connect with skilled local bathroom remodeling specialists. Skip the stress of searching on your own—one call to us links you directly with a trusted professional who can bring your vision to life.",
+    "benefits": [
+      "Fast connection to reliable local remodelers",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large projects",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Complete bathroom renovations",
+      "Shower and bathtub installation or replacement",
+      "Vanity and countertop upgrades",
+      "Tile and flooring installation",
+      "Lighting and electrical updates",
+      "Plumbing fixture replacements",
+      "Custom design and layout improvements",
+      "Accessibility and walk-in shower conversions`"
+    ],
+    "why": "Unlike big national chains or endless online directories, Home Service Guru only works with local remodeling experts. We do the work of finding dependable professionals so you don’t have to waste time comparing quotes, reading reviews, or worrying about unreliable contractors.",
+    "reasons": [
+      {
+        "title": "Local Experts Only",
+        "text": "We connect you with remodelers who know your area and understand your needs."
+      },
+      {
+        "title": "One Call, One Connection",
+        "text": "Skip the hassle—our team links you instantly to the right pro."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "We connect you with local remodelers who know your area."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can I get help with small bathroom updates, or do you only handle full remodels?",
+        "a": "We connect you with remodelers who handle everything from quick updates to complete renovations."
+      },
+      {
+        "q": "Are the remodelers licensed?",
+        "a": "The remodelers we connect you with are independent local businesses. Licensing rules vary by state, so ask your pro about licensing and insurance before work begins."
+      },
+      {
+        "q": "How quickly can I start my bathroom remodel?",
+        "a": "Once you call us, we’ll connect you with a local remodeler right away. Many customers receive quotes and scheduling options within 24–48 hours."
+      },
+      {
+        "q": "Why use Home Service Guru instead of finding a remodeler myself?",
+        "a": "We save you time, stress, and uncertainty. With one call, you’re connected to a trusted local remodeler without the hassle of endless online searching."
+      }
+    ],
+    "phone": "18336949541",
+    "hero": "bathroom-remodeling-hero.jpg",
+    "feature": "bathroom-remodeling-feature.jpg",
+    "phoneDisplay": "(833) 694-9541"
+  },
+  {
+    "slug": "kitchen-remodeling",
+    "oldSlug": "kitchen-remodeling-services",
+    "name": "Kitchen Remodeling",
+    "icon": "kitchen",
+    "emergency": false,
+    "headline": "Kitchen Remodeling Services Near You – Transform Your Space with Local Experts",
+    "help": "Ready to transform your kitchen? Call Home Service Guru today and connect with a trusted local kitchen remodeling expert.",
+    "intro": "Your kitchen is the heart of your home. Whether you need a full remodel or small upgrades, Home Service Guru connects you with trusted local kitchen remodeling specialists who can bring your vision to life. From modern makeovers to functional improvements, we help you find the right expert, fast, reliable, and affordable.",
+    "benefits": [
+      "Local Specialists – Work with remodelers who understand your community and local style trends.",
+      "Trusted Experts – Experienced professionals who deliver quality craftsmanship.",
+      "Stress-Free Process – We do the hard work of finding the right contractor for you.",
+      "Affordable Options – Get expert remodeling without overpaying.",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Complete kitchen renovations",
+      "Vanity and countertop upgrades",
+      "Tile and flooring installation",
+      "Lighting and electrical updates",
+      "Plumbing fixture replacements",
+      "Custom design and layout improvements",
+      "Cabinet Installation & Refinishing",
+      "Countertop Replacement",
+      "Lighting & Fixtures"
+    ],
+    "why": "Finding the right remodeling contractor can be overwhelming. At Home Service Guru, we make it simple by connecting you directly to local kitchen remodeling specialists who deliver dependable results.",
+    "reasons": [
+      {
+        "title": "Local Experts Only",
+        "text": "We connect you with remodelers who know your area and understand your needs."
+      },
+      {
+        "title": "One Call, One Connection",
+        "text": "Skip the hassle—our team links you instantly to the right pro."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "We connect you with local remodelers who know your area."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I get started with a kitchen remodel?",
+        "a": "Simply call us, and we’ll connect you with a trusted local remodeling specialist to discuss your project and provide a plan."
+      },
+      {
+        "q": "Can I remodel my kitchen on a budget?",
+        "a": "Yes! Our network of remodelers can work with a wide range of budgets to deliver the best results for your investment."
+      },
+      {
+        "q": "Do your providers handle both small upgrades and full renovations?",
+        "a": "Absolutely. Whether you just want new cabinets or a complete redesign, we’ll connect you with the right expert."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of finding a contractor myself?",
+        "a": "We save you time, stress, and risk by connecting you with local remodelers, so you don’t have to search on your own."
+      }
+    ],
+    "phone": null,
+    "hero": "kitchen-remodeling-hero.jpg",
+    "feature": "kitchen-remodeling-feature.jpg"
+  },
+  {
+    "slug": "tree-services",
+    "oldSlug": "tree-services",
+    "name": "Tree Services",
+    "icon": "tree",
+    "emergency": false,
+    "headline": "Tree Services Near You – Safe, Reliable, and Affordable",
+    "help": "Ready to start your project? Call Home Service Guru today and get connected with a local concrete specialist you can trust.",
+    "intro": "Trees add beauty and value to your property, but when they become overgrown, damaged, or unsafe, they need expert care. At Home Service Guru, we make it simple to connect with trusted local tree service specialists who can handle everything from trimming and pruning to removal and storm cleanup. One call gets you fast, reliable help from the right pro.",
+    "benefits": [
+      "Local Specialists",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large projects",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Tree Trimming & Pruning",
+      "Tree Removal",
+      "Stump Grinding & Removal",
+      "Storm Damage Cleanup",
+      "Emergency Tree Services",
+      "Land & Lot Clearing",
+      "Tree Health & Disease Treatment",
+      "Shrub Trimming"
+    ],
+    "why": "Finding a reliable tree service company can be risky—you want safety, experience, and professionalism. With Home Service Guru, you don’t have to waste time calling around. We connect you directly to local tree service experts.",
+    "reasons": [
+      {
+        "title": "Local Specialists",
+        "text": "Work with pros who understand your area’s building standards and weather conditions."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "Experienced contractors who deliver reliable workmanship."
+      },
+      {
+        "title": "Affordable Options",
+        "text": "Get high-quality results without overspending."
+      },
+      {
+        "title": "Comprehensive Concrete Solutions",
+        "text": "From small repairs to large projects, we’ve got you covered."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do you handle both residential and commercial concrete projects?",
+        "a": "Yes. Our providers work on everything from small home improvements to large commercial installations."
+      },
+      {
+        "q": "Can I get decorative or stamped concrete?",
+        "a": "Absolutely. Many of our specialists offer custom designs to enhance your property’s appearance."
+      },
+      {
+        "q": "How long does new concrete take to cure?",
+        "a": "While concrete sets within 24–48 hours, full curing typically takes about 28 days. Your contractor will guide you on usage timelines."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of hiring directly?",
+        "a": "We save you time, stress, and uncertainty by connecting you with trusted, local concrete professionals right away."
+      }
+    ],
+    "phone": null,
+    "hero": "tree-services-hero.jpg",
+    "feature": "tree-services-feature.jpg"
+  },
+  {
+    "slug": "concrete",
+    "oldSlug": "concrete-services",
+    "name": "Concrete",
+    "icon": "bricks",
+    "emergency": false,
+    "headline": "Concrete Services Near You – Durable, Reliable, and Affordable",
+    "help": "Ready to start your project? Call Home Service Guru today and get connected with a local concrete specialist you can trust.",
+    "intro": "From driveways and sidewalks to patios and foundations, quality concrete work makes a big difference in your home’s safety, appearance, and value. At Home Service Guru, we connect you with trusted local concrete specialists who deliver strong, lasting results. With one call, we’ll match you to the right professional for your project.",
+    "benefits": [
+      "Local Specialists",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large projects",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Driveway Installation & Repair",
+      "Patio & Walkway Construction",
+      "Concrete Foundations",
+      "Stamped & Decorative Concrete",
+      "Concrete Resurfacing",
+      "Garage & Basement Floors",
+      "Retaining Walls",
+      "Accessibility and walk-in shower conversions`",
+      "Pool Deck Installation & Repair",
+      "Concrete Steps & Stairways"
+    ],
+    "why": "Finding a reliable concrete contractor can be tough. With Home Service Guru, you don’t have to spend hours searching or risk hiring someone unproven. We connect you directly to local concrete specialists who know how to get the job done right.",
+    "reasons": [
+      {
+        "title": "Local Specialists",
+        "text": "Work with pros who understand your area’s building standards and weather conditions."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "Experienced contractors who deliver reliable workmanship."
+      },
+      {
+        "title": "Affordable Options",
+        "text": "Get high-quality results without overspending."
+      },
+      {
+        "title": "Comprehensive Concrete Solutions",
+        "text": "From small repairs to large projects, we’ve got you covered."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do you handle both residential and commercial concrete projects?",
+        "a": "Yes. Our providers work on everything from small home improvements to large commercial installations."
+      },
+      {
+        "q": "Can I get decorative or stamped concrete?",
+        "a": "Absolutely. Many of our specialists offer custom designs to enhance your property’s appearance."
+      },
+      {
+        "q": "How long does new concrete take to cure?",
+        "a": "While concrete sets within 24–48 hours, full curing typically takes about 28 days. Your contractor will guide you on usage timelines."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of hiring directly?",
+        "a": "We save you time, stress, and uncertainty by connecting you with trusted, local concrete professionals right away."
+      }
+    ],
+    "phone": null,
+    "hero": "concrete-hero.jpg",
+    "feature": "concrete-feature.jpg"
+  },
+  {
+    "slug": "garage-doors",
+    "oldSlug": "garage_door",
+    "name": "Garage Doors",
+    "icon": "garage",
+    "emergency": false,
+    "headline": "Garage Door Services Near You – Safe, Reliable, and Affordable",
+    "help": "",
+    "intro": "Your garage door is the largest moving part of your home and one of its main entry points. When it’s working well, you hardly think about it. When it sticks, gets noisy or won’t open, it can throw off your whole day and leave your home less secure. Home Services Guru connects homeowners with local garage door professionals for everything from quick spring and opener repairs to installing a brand-new door. You get the right expert for the job, without the hassle.",
+    "benefits": [
+      "Local Specialists",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large repairs",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Garage Door Repair",
+      "Garage Door Installation",
+      "Garage Door Replacement",
+      "Broken Spring Repair & Replacement",
+      "Garage Door Opener Repair & Installation",
+      "Cable, Roller & Track Repair",
+      "Off-Track Door Repair",
+      "Panel Replacement",
+      "Emergency Garage Door Service"
+    ],
+    "why": "Garage door repairs involve high-tension springs and heavy moving parts, so they aren’t a good DIY project. That’s why we connect you with local garage door specialists who know how to get the job done safely. You don’t have to spend hours comparing contractors. Tell us what you need, and we’ll match you with a pro who fits your project and your budget.",
+    "reasons": [
+      {
+        "title": "Local Specialists",
+        "text": "Work with pros who understand your area’s building standards and weather conditions."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "Experienced contractors who deliver reliable workmanship."
+      },
+      {
+        "title": "Affordable Options",
+        "text": "Get high-quality results without overspending."
+      },
+      {
+        "title": "Comprehensive Septic Solutions",
+        "text": "From small repairs to large projects, we’ve got you covered."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How long does a garage door typically last?",
+        "a": "Watch for grinding or squeaking, jerky or uneven movement, a door that reverses or won’t close all the way, visible gaps or sagging, frayed cables, or an opener that runs while the door doesn’t move. A loud bang from the garage often means a spring has broken."
+      },
+      {
+        "q": "What are signs my garage door needs repair?",
+        "a": "Cost depends on the type of service, the door’s size and material, the parts needed and where you live. Routine maintenance and small repairs cost much less than replacing springs, installing an opener or putting in a new door."
+      },
+      {
+        "q": "How much do garage door services cost?",
+        "a": "No. With a broken spring, the door can be extremely heavy and may fall without warning. Don’t try to open it by hand or with the opener. Leave it in place and call a professional."
+      },
+      {
+        "q": "Can I use my garage door if a spring is broken?",
+        "a": "Home Services Campaign Disclaimer: Home Services Guru is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and Home Services Guru does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on Home Services Guru."
+      }
+    ],
+    "phone": "18336664707",
+    "hero": "garage-doors-hero.jpg",
+    "feature": "garage-doors-feature.jpg",
+    "phoneDisplay": "(833) 666-4707"
+  },
+  {
+    "slug": "septic",
+    "oldSlug": "septic-tank-services",
+    "name": "Septic Services",
+    "icon": "tank",
+    "emergency": false,
+    "headline": "Septic Tank Services Near You – Durable, Reliable, and Affordable",
+    "help": "",
+    "intro": "From routine pumping and inspections to repairs and full system replacements, quality septic tank service plays a crucial role in protecting your property, preventing costly issues, and keeping your wastewater system running smoothly. At Home Service Guru, we connect homeowners with trusted local septic tank professionals who provide reliable, efficient service. With one call, we’ll match you with the right expert for your septic tank needs.",
+    "benefits": [
+      "Local Specialists",
+      "Affordable solutions to fit your budget",
+      "Skilled specialists for small or large projects",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with high-quality results"
+    ],
+    "jobs": [
+      "Septic Tank Pumping & Cleaning",
+      "Septic System Inspections",
+      "Septic Tank Installation",
+      "Septic Tank Repairs",
+      "Drain Field Repair & Replacement",
+      "Drain Field Services",
+      "Septic System Installation",
+      "Septic System Replacement",
+      "Emergency Septic Service",
+      "Septic Tank Locating"
+    ],
+    "why": "Finding a reliable septic tank contractor can be tough. With Home Service Guru, you don’t have to spend hours searching or risk hiring someone unproven. We connect you directly to local septic tank specialists who know how to get the job done right.",
+    "reasons": [
+      {
+        "title": "Local Specialists",
+        "text": "Work with pros who understand your area’s building standards and weather conditions."
+      },
+      {
+        "title": "Trusted Professionals",
+        "text": "Experienced contractors who deliver reliable workmanship."
+      },
+      {
+        "title": "Affordable Options",
+        "text": "Get high-quality results without overspending."
+      },
+      {
+        "title": "Comprehensive Septic Solutions",
+        "text": "From small repairs to large projects, we’ve got you covered."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How often should I have my septic tank pumped?",
+        "a": "Common warning signs include slow drains, sewage backups, foul odors near the tank or drain field, standing water in the yard, and unusually lush grass over the septic area. If you notice any of these issues, it’s important to schedule an inspection promptly."
+      },
+      {
+        "q": "What are the signs that my septic system needs service?",
+        "a": "The cost varies based on the type of service needed, the size of the tank, and your location. Routine pumping is generally more affordable than major repairs or system replacements. We can connect you with local professionals for a free estimate."
+      },
+      {
+        "q": "How much does septic tank service cost?",
+        "a": "In most cases, it’s best to limit water use during septic pumping or repairs. Your technician will let you know if any temporary restrictions are necessary to ensure the service is completed safely and efficiently."
+      },
+      {
+        "q": "Can I use my plumbing while my septic tank is being serviced?",
+        "a": "Home Services Campaign Disclaimer: Home Services Guru is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and Home Services Guru does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on Home Services Guru."
+      }
+    ],
+    "phone": null,
+    "hero": "septic-hero.jpg",
+    "feature": "septic-feature.jpg"
+  },
+  {
+    "slug": "home-security",
+    "oldSlug": "home-security",
+    "name": "Home Security",
+    "icon": "shield",
+    "emergency": false,
+    "headline": "Home Security Installation Near You – Protect What Matters Most",
+    "help": "Ready to start your project? Call Home Service Guru today and get connected with a local concrete specialist you can trust.",
+    "intro": "Finding the right home security provider can be confusing—different systems, contracts, and installers make it hard to choose. Home Service Guru takes the stress out of the process by connecting you directly with local home security professionals who deliver reliable protection you can trust.",
+    "benefits": [],
+    "jobs": [
+      "Trusted Local Providers",
+      "Fast Connections",
+      "Personalized Matches",
+      "No Guesswork",
+      "Peace of Mind"
+    ],
+    "why": "Finding the right home security provider can be confusing—different systems, contracts, and installers make it hard to choose. Home Service Guru takes the stress out of the process by connecting you directly with local home security professionals who deliver reliable protection you can trust.",
+    "reasons": [
+      {
+        "title": "Security Camera Installation",
+        "text": "Indoor and outdoor camera systems for full visibility."
+      },
+      {
+        "title": "Smart Home Security Systems",
+        "text": "Connect your alarms, lights, and locks for total control."
+      },
+      {
+        "title": "Burglar & Intrusion Alarms",
+        "text": "Professional alarm system setup for peace of mind."
+      },
+      {
+        "title": "Motion Detectors & Sensors",
+        "text": "Advanced technology to detect movement and protect entry points."
+      },
+      {
+        "title": "Video Doorbell Installation",
+        "text": "See who’s at your door from anywhere."
+      },
+      {
+        "title": "Home Automation Integration",
+        "text": "Combine security with convenience through smart tech."
+      },
+      {
+        "title": "System Upgrades & Maintenance",
+        "text": "Keep your equipment running smoothly year-round."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can I integrate my new security system with my smart home devices?",
+        "a": "Yes. Many of our providers specialize in smart home security systems that connect with your lights, locks, and other devices."
+      },
+      {
+        "q": "Do your providers install both wired and wireless systems?",
+        "a": "Absolutely. We connect you with installers who handle both types of systems based on your home’s setup and preferences."
+      },
+      {
+        "q": "Is professional installation really necessary?",
+        "a": "Yes. A professional ensures that your system is installed correctly and fully operational—maximizing your home’s protection."
+      },
+      {
+        "q": "Why should I call Home Service Guru instead of choosing a company directly?",
+        "a": "We save you time and hassle by connecting you with local home security experts."
+      }
+    ],
+    "phone": null,
+    "hero": "home-security-hero.jpg",
+    "feature": "home-security-feature.jpg"
+  },
+  {
+    "slug": "self-storage",
+    "oldSlug": "self-storage",
+    "name": "Self Storage",
+    "icon": "box",
+    "emergency": false,
+    "headline": "Self Storage Near You – Safe, Convenient, and Affordable",
+    "help": "Need extra space? Call Home Service Guru today and get connected with a trusted local self storage provider.",
+    "intro": "Whether you’re moving, downsizing, or just need extra space, finding the right storage solution can be stressful. At Home Service Guru, we make it easy to connect with trusted local self storage providers who offer safe, secure, and convenient options. With one call, you’ll be matched to the right storage facility for your needs and budget.",
+    "benefits": [
+      "Local Facilities",
+      "Safe & Secure",
+      "Flexible Options",
+      "Affordable Rates",
+      "Hassle-Free Process",
+      "Local Knowledge"
+    ],
+    "jobs": [
+      "Personal Storage Units",
+      "Business Storage Solutions",
+      "Climate-Controlled Units",
+      "Vehicle Storage",
+      "Temporary Moving Storage",
+      "24/7 Access Units"
+    ],
+    "why": "Searching for storage online can feel overwhelming with so many options. With Home Service Guru, you don’t have to compare dozens of facilities—we connect you directly with local storage providers.",
+    "reasons": [
+      {
+        "title": "Trusted Local Providers",
+        "text": "Only reliable, well-maintained facilities."
+      },
+      {
+        "title": "Fast Connections",
+        "text": "One call links you to the right storage solution."
+      },
+      {
+        "title": "Personalized Matches",
+        "text": "Find the perfect unit size and features for your needs."
+      },
+      {
+        "title": "Convenience First",
+        "text": "Save time and skip the endless searching."
+      },
+      {
+        "title": "Peace of Mind",
+        "text": "Know your belongings are safe, secure, and accessible."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I know what size unit I need?",
+        "a": "Our providers can help you choose the right unit size based on what you’re storing—whether it’s a few boxes or the contents of an entire home."
+      },
+      {
+        "q": "Are storage facilities secure?",
+        "a": "Yes. The facilities we connect you with offer strong security features such as gated access, surveillance cameras, and on-site staff."
+      },
+      {
+        "q": "Can I rent storage short-term or long-term?",
+        "a": "Absolutely. Options are available for both temporary and extended storage needs."
+      },
+      {
+        "q": "Why call Home Service Guru instead of searching myself?",
+        "a": "We save you time and hassle by connecting you directly to trusted local storage providers who offer the right solutions at fair rates."
+      }
+    ],
+    "phone": null,
+    "hero": "self-storage-hero.jpg",
+    "feature": "self-storage-feature.jpg"
+  }
+]

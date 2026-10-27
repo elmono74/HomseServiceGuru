@@ -1,0 +1,83 @@
+---
+import Icon from "./Icon.astro";
+import { telHref } from "../data/services";
+
+// Sticky bottom bar on phones: the one action that matters is always a thumb away.
+interface Props {
+  phone?: string | null;
+  phoneDisplay?: string;
+  serviceName?: string;
+}
+
+const { phone, phoneDisplay, serviceName } = Astro.props;
+---
+
+<div class="call-bar" role="region" aria-label="Call for help">
+  {
+    phone ? (
+      <a class="btn btn-call" href={telHref(phone)}>
+        <Icon name="phone-call" />
+        <span>
+          Call {phoneDisplay}
+          {serviceName && <small>{serviceName} · Free to call</small>}
+        </span>
+      </a>
+    ) : serviceName ? (
+      <a class="btn btn-call" href="/contact-us/">
+        <Icon name="phone" />
+        <span>Request a callback</span>
+      </a>
+    ) : (
+      <a class="btn btn-call" href="/#find-a-pro">
+        <Icon name="phone-call" />
+        <span>
+          Find a local pro
+          <small>Pick a service to see its number</small>
+        </span>
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .call-bar {
+    display: none;
+  }
+
+  @media (max-width: 720px) {
+    .call-bar {
+      display: block;
+      position: fixed;
+      inset: auto 0 0 0;
+      z-index: 60;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: rgb(255 255 255 / 94%);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+    }
+
+    .call-bar .btn {
+      width: 100%;
+      min-height: 58px;
+      font-size: 1.1rem;
+    }
+
+    .call-bar span {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.15;
+    }
+
+    small {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    :global(body) {
+      padding-bottom: 84px;
+    }
+  }
+</style>
