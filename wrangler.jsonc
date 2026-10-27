@@ -1,0 +1,11 @@
+// Cloudflare Workers config: serves the static Astro build from dist/.
+// Workers Builds runs `npm run build`, then `npx wrangler deploy` with this file.
+{
+  "name": "homeguru",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Serve dist/404.html with a 404 status for unknown paths.
+    "not_found_handling": "404-page"
+  }
+}

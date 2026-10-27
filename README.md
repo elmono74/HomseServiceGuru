@@ -15,15 +15,13 @@ npm run dev
 ## Making changes
 
 1. Edit the files (see below), then check them with `npm run dev`.
-2. Commit and push to `main`. If Cloudflare Pages is connected to this repo, each push to `main` deploys the site automatically, and pushes to other branches get their own preview URLs.
+2. Commit and push to `main`. Cloudflare rebuilds and deploys the site automatically.
 
-## Cloudflare Pages build settings
+## Cloudflare deployment
 
-When connecting this repo in Cloudflare (**Workers & Pages → Create → Pages → Connect to Git**):
+The repo is connected to the Cloudflare Worker `homeguru` (Workers Builds). Each push to `main` runs `npm run build`, then `npx wrangler deploy`, which reads `wrangler.jsonc` and uploads `dist/` as static assets.
 
-- Framework preset: **Astro**
-- Build command: `npm run build`
-- Build output directory: `dist`
+- Preview URL: https://homeguru.solitary-wind-193d.workers.dev
 - Node version: read from `.node-version` (Astro 7 needs Node 22.12 or newer)
 
 ## Where things live
