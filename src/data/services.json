@@ -1029,7 +1029,8 @@
         "a": "We save you time and hassle by connecting you with local home security experts."
       }
     ],
-    "phone": null,
+    "phone": "18336669142",
+    "phoneDisplay": "(833) 666-9142",
     "hero": "home-security-hero.jpg",
     "feature": "home-security-feature.jpg"
   },
