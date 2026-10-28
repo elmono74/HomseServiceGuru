@@ -327,7 +327,8 @@
         "a": "Absolutely. We’ll connect you with roofers who offer fast emergency service to protect your home from further damage."
       }
     ],
-    "phone": null,
+    "phone": "18572013454",
+    "phoneDisplay": "(857) 201-3454",
     "hero": "roofing-hero.jpg",
     "feature": "roofing-feature.jpg"
   },
