@@ -86,7 +86,7 @@ const schema = [
       <h1>{s.name} help, <span class="hl">fast.</span></h1>
       <p class="lede">{s.help || s.short}</p>
       <div class="hero-cta">
-        <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} size="lg" />
+        <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} serviceName={s.name} size="lg" />
         <span class="free"><Icon name="check" size={18} /> Free to call · No obligation</span>
       </div>
       <ul class="chips">
@@ -149,7 +149,7 @@ const schema = [
             ))}
           </ul>
           <div class="center-cta">
-            <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} label="Call" />
+            <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} serviceName={s.name} label="Call" />
           </div>
         </div>
       </section>
@@ -191,7 +191,7 @@ const schema = [
         <span class="eyebrow">FAQ</span>
         <h2>{s.name} questions, answered.</h2>
         <p class="lede">Still not sure? Call and ask. There's no obligation.</p>
-        <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} variant="dark" />
+        <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} serviceName={s.name} variant="dark" />
       </div>
       <Faq items={s.faq} />
     </div>

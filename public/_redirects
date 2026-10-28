@@ -70,7 +70,3 @@
 # Blank in the copy of the old site; temporary until the post is fetched again
 /your-ac-system-needs-immediate-professional-attention/ /services/hvac/ 302
 /your-ac-system-needs-immediate-professional-attention /services/hvac/ 302
-
-# Not built yet
-/contact-us/ /#find-a-pro 302
-/contact-us /#find-a-pro 302

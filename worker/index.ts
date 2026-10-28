@@ -1,4 +1,5 @@
-// Cloudflare Worker entry: POST /api/chat answers visitor questions with Claude
+// Cloudflare Worker entry: POST /api/contact emails the contact form, and
+// POST /api/chat answers visitor questions with Claude
 // Haiku and points them to the right service's call button. Every other request
 // is served from the static Astro build (dist/) via the ASSETS binding.
 import Anthropic from "@anthropic-ai/sdk";
@@ -6,10 +7,27 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { z } from "zod";
 import services from "../src/data/services.json";
 
+interface RateLimiter {
+  limit(options: { key: string }): Promise<{ success: boolean }>;
+}
+
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
   ANTHROPIC_API_KEY?: string;
-  CHAT_LIMITER?: { limit(options: { key: string }): Promise<{ success: boolean }> };
+  CHAT_LIMITER?: RateLimiter;
+  CONTACT_LIMITER?: RateLimiter;
+  EMAIL?: {
+    send(message: {
+      to: string;
+      from: { email: string; name: string };
+      replyTo?: string;
+      subject: string;
+      text: string;
+      html: string;
+    }): Promise<{ messageId: string }>;
+  };
+  CONTACT_TO?: string;
+  CONTACT_FROM?: string;
 }
 
 const MODEL = "claude-haiku-5-5";
@@ -106,12 +124,102 @@ async function handleChat(request: Request, env: Env): Promise<Response> {
   }
 }
 
+// POST /api/contact: emails the Contact page form through Cloudflare Email Sending.
+// [form field, label, max length, required]
+const CONTACT_FIELDS: [string, string, number, boolean][] = [
+  ["name", "Name", 200, true],
+  ["email", "Email", 254, true],
+  ["phone", "Phone", 50, true],
+  ["service", "Service", 100, false],
+  ["date", "Preferred date", 20, false],
+  ["time", "Preferred time", 20, false],
+  ["message", "Message", 5000, false],
+];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const escapeHtml = (s: string) =>
+  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+
+async function handleContact(request: Request, env: Env): Promise<Response> {
+  // The page posts with fetch and wants JSON; without JavaScript the browser gets redirected back.
+  const wantsJson = (request.headers.get("Accept") ?? "").includes("application/json");
+  const reply = (status: number, body: Record<string, unknown>) =>
+    wantsJson
+      ? json(body, status)
+      : Response.redirect(new URL(`/contact-us/?sent=${status === 200 ? 1 : 0}`, request.url).href, 303);
+
+  if (env.CONTACT_LIMITER) {
+    const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
+    const { success } = await env.CONTACT_LIMITER.limit({ key: ip });
+    if (!success) return reply(429, { ok: false, error: "Too many messages. Please wait a minute and try again." });
+  }
+
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return reply(400, { ok: false, error: "Invalid form submission." });
+  }
+  // Honeypot: real visitors never see or fill this field.
+  if (form.get("website")) return reply(200, { ok: true });
+
+  const values: Record<string, string> = {};
+  const invalid: string[] = [];
+  for (const [name, , max, required] of CONTACT_FIELDS) {
+    values[name] = String(form.get(name) ?? "").trim().slice(0, max);
+    if (required && !values[name]) invalid.push(name);
+  }
+  if (values.email && !EMAIL_RE.test(values.email)) invalid.push("email");
+  if (invalid.length) {
+    return reply(422, { ok: false, invalid, error: "Please check the highlighted fields and try again." });
+  }
+
+  if (!env.EMAIL || !env.CONTACT_TO || !env.CONTACT_FROM) {
+    console.error("contact: email binding or CONTACT_TO/CONTACT_FROM is not configured");
+    return reply(500, { ok: false, error: "Sorry, the contact form isn't working right now. Please try again later." });
+  }
+
+  const rows = CONTACT_FIELDS.filter(([name]) => values[name] && name !== "message").map(([name, label]) => [
+    label,
+    values[name],
+  ]);
+  const message = values.message;
+  const subject = `Website contact: ${values.service || values.name}`.replace(/[\r\n]+/g, " ");
+  const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n") + (message ? `\n\nMessage:\n${message}\n` : "\n");
+  const html =
+    `<table cellpadding="4">${rows
+      .map(([k, v]) => `<tr><td><strong>${k}</strong></td><td>${escapeHtml(v)}</td></tr>`)
+      .join("")}</table>` +
+    (message ? `<p><strong>Message</strong></p><p style="white-space:pre-wrap">${escapeHtml(message)}</p>` : "");
+
+  try {
+    await env.EMAIL.send({
+      to: env.CONTACT_TO,
+      from: { email: env.CONTACT_FROM, name: "Home Services Guru Website" },
+      replyTo: values.email,
+      subject,
+      text,
+      html,
+    });
+  } catch (error) {
+    const e = error as { code?: string; message?: string };
+    console.error(`contact: send failed ${e.code ?? ""}`, e.message ?? error);
+    return reply(502, { ok: false, error: "Sorry, your message couldn't be sent. Please try again later." });
+  }
+  return reply(200, { ok: true });
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
-    if (url.pathname === "/api/chat") {
+    const api: Record<string, (request: Request, env: Env) => Promise<Response>> = {
+      "/api/chat": handleChat,
+      "/api/contact": handleContact,
+    };
+    const handler = api[url.pathname];
+    if (handler) {
       if (request.method !== "POST") return json({ error: "Method not allowed." }, 405);
-      return handleChat(request, env);
+      return handler(request, env);
     }
     return env.ASSETS.fetch(request);
   },

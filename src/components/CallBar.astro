@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import { telHref } from "../data/services";
+import { callbackHref, telHref } from "../data/services";
 
 // Sticky bottom bar on phones: the one action that matters is always a thumb away.
 interface Props {
@@ -23,7 +23,7 @@ const { phone, phoneDisplay, serviceName } = Astro.props;
         </span>
       </a>
     ) : serviceName ? (
-      <a class="btn btn-call" href="/contact-us/">
+      <a class="btn btn-call" href={callbackHref(serviceName)}>
         <Icon name="phone" />
         <span>Request a callback</span>
       </a>

@@ -100,7 +100,7 @@ const schema = [
         </div>
         {
           s ? (
-            <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} variant="light" size="lg" />
+            <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} serviceName={s.name} variant="light" size="lg" />
           ) : (
             <a class="btn btn-light btn-lg" href="/#find-a-pro">
               <Icon name="phone-call" /> Find my pro
@@ -119,7 +119,7 @@ const schema = [
             </span>
             <h2>{s.name}</h2>
             <p>{s.short}</p>
-            <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} />
+            <CallButton phone={s.phone} phoneDisplay={s.phoneDisplay} serviceName={s.name} />
             <a class="more" href={`/services/${s.slug}/`}>
               About {lower} help <Icon name="arrow" size={18} />
             </a>

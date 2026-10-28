@@ -50,6 +50,11 @@ export const services: Service[] = raw.map((s) => ({
 
 export const emergencyServices = services.filter((s) => s.emergency);
 
+// The Contact page's callback form, with the service pre-selected when known.
+export function callbackHref(serviceName?: string) {
+  return serviceName ? `/contact-us/?service=${encodeURIComponent(serviceName)}` : "/contact-us/";
+}
+
 export function telHref(phone: string) {
   return "tel:+" + phone.replace(/\D/g, "");
 }
