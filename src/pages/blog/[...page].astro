@@ -1,0 +1,15 @@
+---
+import GuideList from "../../components/GuideList.astro";
+import { paginatePosts, posts } from "../../data/posts";
+
+// /blog/, /blog/page/2/, ... (same addresses as the old WordPress blog).
+export const getStaticPaths = () => paginatePosts(posts, "/blog/");
+
+const { page } = Astro.props;
+---
+
+<GuideList
+  page={page}
+  heading="Home guides"
+  description="Tips for fixing, preventing and maintaining problems around the house, and knowing when it's time to call a pro."
+/>

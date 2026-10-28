@@ -1,0 +1,26 @@
+---
+import GuideList from "../../../components/GuideList.astro";
+import { categoryNames, paginatePosts, postsInCategory } from "../../../data/posts";
+
+// /category/<slug>/ and /category/<slug>/page/2/ (the old WordPress category archives).
+export const getStaticPaths = () =>
+  Object.keys(categoryNames)
+    .filter((category) => postsInCategory(category).length > 0)
+    .flatMap((category) =>
+    paginatePosts(postsInCategory(category), `/category/${category}/`).map((p) => ({
+      params: { ...p.params, category },
+      props: p.props,
+    })),
+  );
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+const name = categoryNames[category];
+---
+
+<GuideList
+  page={page}
+  category={category}
+  heading={`${name} guides`}
+  description={`Articles about ${name.toLowerCase()} from the Home Services Guru blog.`}
+/>

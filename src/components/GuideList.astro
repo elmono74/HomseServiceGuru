@@ -1,0 +1,190 @@
+---
+import Base from "../layouts/Base.astro";
+import GuideCard from "./GuideCard.astro";
+import Icon from "./Icon.astro";
+import { categoryNames, posts, type GuidePage } from "../data/posts";
+
+// Shared listing for /blog/ (all guides) and /category/<slug>/ (one old blog category).
+interface Props {
+  page: GuidePage;
+  heading: string;
+  description: string;
+  category?: string;
+}
+
+const { page, heading, description, category } = Astro.props;
+// Category chips: only categories that still have posts, biggest first.
+const chips = Object.entries(categoryNames)
+  .map(([slug, name]) => ({ slug, name, count: posts.filter((p) => p.categories.includes(slug)).length }))
+  .filter((c) => c.count > 0 && c.slug !== "uncategorized")
+  .sort((a, b) => b.count - a.count);
+const title = page.currentPage > 1 ? `${heading} (Page ${page.currentPage})` : heading;
+---
+
+<Base title={`${title} | Home Services Guru`} description={description}>
+  <section class="list-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        {
+          category ? (
+            <>
+              <span aria-hidden="true">/</span> <a href="/blog/">Guides</a> <span aria-hidden="true">/</span>
+              <span aria-current="page">{categoryNames[category]}</span>
+            </>
+          ) : (
+            <>
+              <span aria-hidden="true">/</span> <span aria-current="page">Guides</span>
+            </>
+          )
+        }
+      </nav>
+      <h1>{heading}</h1>
+      <p class="lede">{description}</p>
+      <nav class="chips" aria-label="Guide topics">
+        <a href="/blog/" aria-current={!category ? "page" : undefined}>All</a>
+        {
+          chips.map((c) => (
+            <a href={`/category/${c.slug}/`} aria-current={c.slug === category ? "page" : undefined}>
+              {c.name}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <section class="list-body">
+    <div class="wrap">
+      <div class="grid">
+        {page.data.map((p) => <GuideCard guide={p} />)}
+      </div>
+
+      {
+        page.lastPage > 1 && (
+          <nav class="pager" aria-label="Pages">
+            {page.prev ? (
+              <a class="btn btn-ghost" href={page.prev}>
+                <Icon name="arrow" class="flip" /> Newer
+              </a>
+            ) : (
+              <span />
+            )}
+            <span class="count">
+              Page {page.currentPage} of {page.lastPage}
+            </span>
+            {page.next ? (
+              <a class="btn btn-ghost" href={page.next}>
+                Older <Icon name="arrow" />
+              </a>
+            ) : (
+              <span />
+            )}
+          </nav>
+        )
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  .list-hero {
+    background: var(--cream);
+    padding-block: 40px 36px;
+  }
+
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .crumbs a {
+    color: var(--muted);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    margin: 0 0 10px;
+  }
+
+  .lede {
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 1.1rem;
+    margin: 0 0 24px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chips a {
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 550;
+    text-decoration: none;
+  }
+
+  .chips a:hover {
+    border-color: var(--orange);
+  }
+
+  .chips a[aria-current="page"] {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+
+  .list-body {
+    padding-block: 48px clamp(64px, 9vw, 112px);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px 28px;
+  }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .count {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .pager :global(.flip) {
+    transform: scaleX(-1);
+  }
+
+  @media (max-width: 960px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .count {
+      display: none;
+    }
+  }
+</style>

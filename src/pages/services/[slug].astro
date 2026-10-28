@@ -8,7 +8,7 @@ import Faq from "../../components/Faq.astro";
 import ServiceCard from "../../components/ServiceCard.astro";
 import GuideCard from "../../components/GuideCard.astro";
 import { services, type Service } from "../../data/services";
-import { guides } from "../../data/guides";
+import { posts } from "../../data/posts";
 
 export function getStaticPaths() {
   return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
@@ -21,7 +21,7 @@ interface Props {
 const { service: s } = Astro.props;
 const lower = s.name.toLowerCase();
 const related = services.filter((o) => o.slug !== s.slug && o.emergency === s.emergency).slice(0, 4);
-const serviceGuides = guides.filter((g) => g.service === s.slug);
+const serviceGuides = posts.filter((p) => p.service?.slug === s.slug).slice(0, 3);
 const url = new URL(`/services/${s.slug}/`, Astro.site).href;
 
 const schema = [

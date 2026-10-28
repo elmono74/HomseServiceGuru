@@ -1,28 +1,28 @@
 ---
 import { Image } from "astro:assets";
-import type { guides } from "../data/guides";
-import { services } from "../data/services";
+import mascot from "../assets/guru-mascot.png";
+import { formatDate, type Post } from "../data/posts";
 
 interface Props {
-  guide: (typeof guides)[number];
+  guide: Post;
 }
 
 const { guide: g } = Astro.props;
-const service = services.find((s) => s.slug === g.service);
-const date = new Date(g.date + "T12:00:00").toLocaleDateString("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-});
 ---
 
 <article class="guide">
-  <a href={`/${g.slug}/`} class="img">
-    <Image src={g.image} alt="" width={600} height={390} />
+  <a href={`/${g.slug}/`} class:list={["img", { placeholder: !g.image }]} tabindex="-1" aria-hidden="true">
+    {
+      g.image ? (
+        <Image src={g.image} alt="" width={600} height={390} />
+      ) : (
+        <Image src={mascot} alt="" width={160} />
+      )
+    }
   </a>
   <div class="meta">
-    {service && <span class="cat">{service.name}</span>}
-    <time datetime={g.date}>{date}</time>
+    <span class="cat">{g.service?.name ?? g.categoryName}</span>
+    <time datetime={g.date}>{formatDate(g.date)}</time>
   </div>
   <h3><a href={`/${g.slug}/`}>{g.title}</a></h3>
   <p>{g.excerpt}</p>
@@ -47,6 +47,18 @@ const date = new Date(g.date + "T12:00:00").toLocaleDateString("en-US", {
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+  }
+
+  .img.placeholder {
+    display: grid;
+    place-items: center;
+    background: var(--cream);
+  }
+
+  .img.placeholder img {
+    width: 34%;
+    height: auto;
+    object-fit: contain;
   }
 
   .guide:hover .img img {

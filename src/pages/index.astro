@@ -9,7 +9,9 @@ import GuideCard from "../components/GuideCard.astro";
 import portrait from "../assets/guru-portrait.png";
 import mascot from "../assets/guru-mascot.png";
 import { services, emergencyServices } from "../data/services";
-import { guides } from "../data/guides";
+import { posts } from "../data/posts";
+
+const guides = posts.slice(0, 3);
 
 const reasons = [
   { icon: "clock", title: "Fast connections", text: "We match you with a qualified local specialist in minutes, not days." },
