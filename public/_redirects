@@ -70,3 +70,33 @@
 # Blank in the copy of the old site; temporary until the post is fetched again
 /your-ac-system-needs-immediate-professional-attention/ /services/hvac/ 302
 /your-ac-system-needs-immediate-professional-attention /services/hvac/ 302
+
+# Posts that were only theme filler text under a real title (dropped 2026-10-28)
+/best-plumbing-practices-to-save-water-and-money/ /services/plumbing/ 301
+/best-plumbing-practices-to-save-water-and-money /services/plumbing/ 301
+/best-ways-to-unclog-a-kitchen-sink-without-chemicals/ /services/plumbing/ 301
+/best-ways-to-unclog-a-kitchen-sink-without-chemicals /services/plumbing/ 301
+/troubleshoot-common-ac-problems-calling-for-help/ /services/hvac/ 301
+/troubleshoot-common-ac-problems-calling-for-help /services/hvac/ 301
+/benefits-of-annual-ac-tune-ups-and-checkups/ /services/hvac/ 301
+/benefits-of-annual-ac-tune-ups-and-checkups /services/hvac/ 301
+/top-handyman-electrical-repair-tips-for-safer-homes/ /services/electrical/ 301
+/top-handyman-electrical-repair-tips-for-safer-homes /services/electrical/ 301
+/transform-your-home-with-custom-carpentry-projects/ /blog/ 301
+/transform-your-home-with-custom-carpentry-projects /blog/ 301
+/how-to-build-strong-and-lasting-wooden-furniture/ /blog/ 301
+/how-to-build-strong-and-lasting-wooden-furniture /blog/ 301
+
+# Topics left with no posts after the filler posts were dropped
+/category/air-quality/ /category/hvac/ 301
+/category/air-quality /category/hvac/ 301
+/category/leak-repair/ /category/plumbing/ 301
+/category/leak-repair /category/plumbing/ 301
+/category/electronic/ /category/electrician/ 301
+/category/electronic /category/electrician/ 301
+/category/carpentry/ /blog/ 301
+/category/carpentry /blog/ 301
+/category/furniture/ /blog/ 301
+/category/furniture /blog/ 301
+/category/maintenance/ /blog/ 301
+/category/maintenance /blog/ 301
