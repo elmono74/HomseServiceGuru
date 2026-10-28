@@ -1,0 +1,78 @@
+# Old WordPress addresses that have no page on the new site (Workers static assets _redirects).
+# 301 = moved for good. 302 = temporary, until that page is built here.
+
+# Old service pages
+/plumbing-services/ /services/plumbing/ 301
+/plumbing-services /services/plumbing/ 301
+/hvac/ /services/hvac/ 301
+/hvac /services/hvac/ 301
+/electrical-repair-services/ /services/electrical/ 301
+/electrical-repair-services /services/electrical/ 301
+/water-damage/ /services/water-damage/ 301
+/water-damage /services/water-damage/ 301
+/roofing-services/ /services/roofing/ 301
+/roofing-services /services/roofing/ 301
+/mold-remediation/ /services/mold-remediation/ 301
+/mold-remediation /services/mold-remediation/ 301
+/pest-control-services/ /services/pest-control/ 301
+/pest-control-services /services/pest-control/ 301
+/appliance-repair-services/ /services/appliance-repair/ 301
+/appliance-repair-services /services/appliance-repair/ 301
+/bathroom-remodeling-services/ /services/bathroom-remodeling/ 301
+/bathroom-remodeling-services /services/bathroom-remodeling/ 301
+/kitchen-remodeling-services/ /services/kitchen-remodeling/ 301
+/kitchen-remodeling-services /services/kitchen-remodeling/ 301
+/tree-services/ /services/tree-services/ 301
+/tree-services /services/tree-services/ 301
+/concrete-services/ /services/concrete/ 301
+/concrete-services /services/concrete/ 301
+/garage_door/ /services/garage-doors/ 301
+/garage_door /services/garage-doors/ 301
+/septic-tank-services/ /services/septic/ 301
+/septic-tank-services /services/septic/ 301
+/home-security/ /services/home-security/ 301
+/home-security /services/home-security/ 301
+/self-storage/ /services/self-storage/ 301
+/self-storage /services/self-storage/ 301
+
+# Duplicate or theme pages for a service
+/plumbing/ /services/plumbing/ 301
+/plumbing /services/plumbing/ 301
+/residential-plumbing-help/ /services/plumbing/ 301
+/residential-plumbing-help /services/plumbing/ 301
+/ac-repair/ /services/hvac/ 301
+/ac-repair /services/hvac/ 301
+/electrician/ /services/electrical/ 301
+/electrician /services/electrical/ 301
+/services/ /#services 301
+/services /#services 301
+/general-damage-repairs/ / 301
+/general-damage-repairs / 301
+
+# Blog listings the new Guides pages don't need
+/blog-full-width/ /blog/ 301
+/blog-full-width /blog/ 301
+/blog/page/12/ /blog/ 301
+/blog/page/12 /blog/ 301
+/blog/page/13/ /blog/ 301
+/blog/page/13 /blog/ 301
+/blog/page/14/ /blog/ 301
+/blog/page/14 /blog/ 301
+/category/hvac/page/2/ /category/hvac/ 301
+/category/hvac/page/2 /category/hvac/ 301
+/category/mold/page/2/ /category/mold/ 301
+/category/mold/page/2 /category/mold/ 301
+/category/plumbing/page/2/ /category/plumbing/ 301
+/category/plumbing/page/2 /category/plumbing/ 301
+/category/uncategorized/page/2/ /category/uncategorized/ 301
+/category/uncategorized/page/2 /category/uncategorized/ 301
+
+# Blank in the copy of the old site; temporary until the post is fetched again
+/your-ac-system-needs-immediate-professional-attention/ /services/hvac/ 302
+/your-ac-system-needs-immediate-professional-attention /services/hvac/ 302
+
+# Not built yet
+/about-us/ / 302
+/about-us / 302
+/contact-us/ /#find-a-pro 302
+/contact-us /#find-a-pro 302
