@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../assets/logo.png";
+import Logo from "./Logo.astro";
 import { services } from "../data/services";
 
 const year = new Date().getFullYear();
@@ -9,9 +8,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="wrap grid">
     <div class="about">
-      <div class="logo-chip">
-        <Image src={logo} alt="Home Services Guru" width={140} height={80} />
-      </div>
+      <a href="/" class="footer-logo" aria-label="Home Services Guru home"><Logo dark /></a>
       <p>
         One call connects you with a local pro for the job, from plumbing and
         HVAC to roofing and remodeling.
@@ -61,16 +58,14 @@ const year = new Date().getFullYear();
     gap: 48px;
   }
 
-  .logo-chip {
-    display: inline-block;
-    background: #fff;
-    border-radius: 14px;
-    padding: 10px 14px;
-    margin-bottom: 18px;
+  .footer-logo {
+    display: inline-flex;
+    margin-bottom: 20px;
+    text-decoration: none;
   }
 
-  .logo-chip img {
-    width: 120px;
+  .footer-logo :global(.logo) {
+    --logo-size: 1.5;
   }
 
   h2 {

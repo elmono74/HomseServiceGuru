@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../assets/logo.png";
+import Logo from "./Logo.astro";
 import Icon from "./Icon.astro";
 import CallButton from "./CallButton.astro";
 
@@ -21,7 +20,7 @@ const nav = [
 <header class="site-header">
   <div class="wrap bar">
     <a href="/" class="brand" aria-label="Home Services Guru home">
-      <Image src={logo} alt="" width={132} height={76} loading="eager" />
+      <Logo eager />
     </a>
 
     <nav aria-label="Main">
@@ -89,9 +88,10 @@ const nav = [
     min-height: 76px;
   }
 
-  .brand img {
-    width: 112px;
-    height: auto;
+  .brand {
+    display: flex;
+    padding-block: 6px;
+    text-decoration: none;
   }
 
   nav {
@@ -173,8 +173,8 @@ const nav = [
     .menu-toggle {
       display: grid;
     }
-    .brand img {
-      width: 92px;
+    .brand :global(.logo) {
+      --logo-size: 0.85;
     }
     .bar {
       min-height: 64px;

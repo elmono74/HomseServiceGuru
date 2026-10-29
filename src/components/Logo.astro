@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import mascot from "../assets/guru-mascot.png";
+
+// Stacked logo: the guru above the name, with live text so it stays sharp at any size.
+// `dark` switches "GURU" to white for the footer.
+interface Props {
+  dark?: boolean;
+  eager?: boolean;
+}
+
+const { dark = false, eager = false } = Astro.props;
+---
+
+<span class:list={["logo", { dark }]}>
+  <Image src={mascot} alt="" widths={[64, 128, 192]} sizes="64px" loading={eager ? "eager" : "lazy"} />
+  <span class="word">
+    <span class="a">Home Services</span>
+    <span class="b">GURU</span>
+  </span>
+</span>
+
+<style>
+  .logo {
+    --logo-size: 1;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(3px * var(--logo-size));
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.9;
+  }
+
+  .logo img {
+    width: auto;
+    height: calc(46px * var(--logo-size));
+  }
+
+  .word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .a {
+    font-size: calc(12px * var(--logo-size));
+    letter-spacing: -0.01em;
+    color: var(--orange-strong);
+  }
+
+  .b {
+    font-size: calc(17px * var(--logo-size));
+    letter-spacing: 0.18em;
+    margin-left: 0.18em;
+    color: var(--navy);
+  }
+
+  .dark .b {
+    color: #fff;
+  }
+</style>
