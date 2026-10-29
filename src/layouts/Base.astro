@@ -16,6 +16,7 @@ interface Props {
 
 const { title, description, phone, phoneDisplay, serviceName, schema = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const shareImage = new URL("/og-image.png", Astro.site);
 ---
 
 <!doctype html>
@@ -31,8 +32,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Home Services Guru: one call connects you with a local pro." />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#ff6b00" />
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="144x144" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body>
