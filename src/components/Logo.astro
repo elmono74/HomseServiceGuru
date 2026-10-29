@@ -26,7 +26,7 @@ const { dark = false, eager = false } = Astro.props;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: calc(3px * var(--logo-size));
+    gap: 0;
     font-family: var(--font-display);
     font-weight: 800;
     line-height: 0.9;
@@ -41,6 +41,8 @@ const { dark = false, eager = false } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: calc(4px * var(--logo-size));
+    margin-top: calc(-2px * var(--logo-size));
   }
 
   .a {
