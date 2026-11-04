@@ -45,7 +45,8 @@ const schema = [
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Home Services Guru</span>
-        <h1>A Trusted Local Pro, <span class="hl">One Call Away.</span></h1>
+        <h1>Need help at home? <span class="hl">Ask the Guru.</span></h1>
+        <p class="subhead">A trusted local pro, one call away.</p>
         <p class="lede">
           Skip the endless searching. Tell us what's broken and we'll connect you with a local
           specialist near you, usually in minutes.
@@ -195,6 +196,16 @@ const schema = [
 
   .hl {
     color: var(--orange-strong);
+    white-space: nowrap;
+  }
+
+  .subhead {
+    margin: 0 0 14px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    line-height: 1.25;
+    color: var(--navy);
   }
 
   .hero-copy .lede {
