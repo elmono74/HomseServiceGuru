@@ -48,6 +48,8 @@ const options = services.map((s) => ({
         go.href = `/services/${o.slug}/`;
         label.textContent = `Get ${o.name} help`;
       }
+      // The sticky phone call bar (CallBar) follows the pick.
+      document.dispatchEvent(new CustomEvent("service-picked", { detail: o }));
     });
     form.addEventListener("submit", (e) => e.preventDefault());
   }

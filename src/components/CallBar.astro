@@ -28,16 +28,38 @@ const { phone, phoneDisplay, serviceName } = Astro.props;
         <span>Request a callback</span>
       </a>
     ) : (
-      <a class="btn btn-call" href="/#find-a-pro">
+      <a class="btn btn-call" href="/#find-a-pro" data-follow-picker>
         <Icon name="phone-call" />
         <span>
-          Find a local pro
+          <span class="main">Find a local pro</span>
           <small>Pick a service to see its number</small>
         </span>
       </a>
     )
   }
 </div>
+
+<script>
+  // On pages without a service, the bar switches to whatever service the visitor
+  // picks in the homepage picker (ServicePicker dispatches "service-picked").
+  type Picked = { name: string; tel: string; display: string };
+  const link = document.querySelector<HTMLAnchorElement>(".call-bar [data-follow-picker]");
+  document.addEventListener("service-picked", (event) => {
+    const o = (event as CustomEvent<Picked>).detail;
+    if (!link || !o) return;
+    const main = link.querySelector(".main")!;
+    const note = link.querySelector("small")!;
+    if (o.tel) {
+      link.href = o.tel;
+      main.textContent = `Call ${o.display}`;
+      note.textContent = `${o.name} · Free to call`;
+    } else {
+      link.href = `/contact-us/?service=${encodeURIComponent(o.name)}`;
+      main.textContent = "Request a callback";
+      note.textContent = o.name;
+    }
+  });
+</script>
 
 <style>
   .call-bar {
