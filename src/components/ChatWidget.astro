@@ -203,6 +203,16 @@ const catalog = services.map((s) => ({
     }
 
     toggle.addEventListener("click", () => setOpen(panel.hidden));
+    // The homepage hero's "tell the Guru" box (ServicePicker) opens the chat with its text.
+    document.addEventListener("ask-guru", (e) => {
+      const text = ((e as CustomEvent<{ text?: string }>).detail?.text ?? "").trim();
+      if (text) started = true; // skip the guided greeting; answer their question instead
+      setOpen(true);
+      if (text) {
+        input.value = text;
+        form.requestSubmit();
+      }
+    });
     root.querySelector(".close")!.addEventListener("click", () => setOpen(false));
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !panel.hidden) setOpen(false);

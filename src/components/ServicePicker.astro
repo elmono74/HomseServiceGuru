@@ -3,7 +3,8 @@ import Icon from "./Icon.astro";
 import { services, telHref } from "../data/services";
 
 // Homepage hero widget: there's no single company number, so the visitor picks a
-// service and gets that service's tracking number (or a callback link).
+// service and gets that service's tracking number (or a callback link). Below it,
+// visitors can type their problem instead; that opens the chat (ChatWidget) with it.
 const options = services.map((s) => ({
   slug: s.slug,
   name: s.name,
@@ -26,6 +27,18 @@ const options = services.map((s) => ({
       <Icon name="phone-call" />
       <span class="go-label">See your number</span>
     </a>
+  </div>
+  <div class="ask-guru">
+    <input
+      type="text"
+      name="ask"
+      maxlength="500"
+      autocomplete="off"
+      enterkeyhint="send"
+      placeholder="Or just tell the Guru what's wrong…"
+      aria-label="Tell the Guru what's wrong"
+    />
+    <button type="button" class="ask-go"><Icon name="chat" size={20} /> <span>Ask</span></button>
   </div>
   <p class="note"><Icon name="badge" size={18} /> Free to call · Local pros near you</p>
 </form>
@@ -52,6 +65,20 @@ const options = services.map((s) => ({
       document.dispatchEvent(new CustomEvent("service-picked", { detail: o }));
     });
     form.addEventListener("submit", (e) => e.preventDefault());
+
+    // "Tell the Guru": hand the text to the chat widget, which opens and sends it.
+    const ask = form.querySelector<HTMLInputElement>(".ask-guru input")!;
+    const askGuru = () => {
+      document.dispatchEvent(new CustomEvent("ask-guru", { detail: { text: ask.value } }));
+      ask.value = "";
+    };
+    form.querySelector(".ask-go")!.addEventListener("click", askGuru);
+    ask.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        askGuru();
+      }
+    });
   }
 </script>
 
@@ -111,6 +138,53 @@ const options = services.map((s) => ({
     padding: 0 22px;
   }
 
+  .ask-guru {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .ask-guru input {
+    width: 100%;
+    height: 56px;
+    padding: 0 18px;
+    border: 2px dashed var(--line);
+    border-radius: 14px;
+    background: #fff;
+    font: inherit;
+    color: var(--ink);
+  }
+
+  .ask-guru input::placeholder {
+    color: var(--muted);
+  }
+
+  .ask-guru input:focus {
+    outline: 2px solid var(--orange);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+
+  .ask-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 14px;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .ask-go:hover {
+    background: #0c2436;
+  }
+
   .note {
     display: flex;
     align-items: center;
@@ -130,6 +204,20 @@ const options = services.map((s) => ({
     }
     .go {
       min-width: 0;
+    }
+    .ask-guru {
+      grid-template-columns: 1fr;
+    }
+    /* Typed text stays 16px so iPhones don't zoom in on focus; only the hint shrinks. */
+    .ask-guru input {
+      padding: 0 12px;
+    }
+    .ask-guru input::placeholder {
+      font-size: 0.94rem;
+    }
+    .ask-go {
+      justify-content: center;
+      height: 52px;
     }
   }
 </style>
