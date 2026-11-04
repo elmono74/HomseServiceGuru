@@ -6,12 +6,16 @@ import ServicePicker from "../components/ServicePicker.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import HowItWorks from "../components/HowItWorks.astro";
 import GuideCard from "../components/GuideCard.astro";
-import portrait from "../assets/guru-portrait.png";
 import mascot from "../assets/guru-mascot.png";
 import { services, emergencyServices } from "../data/services";
 import { posts } from "../data/posts";
 
 const guides = posts.slice(0, 3);
+
+// Hero: the guru in a ring of service icons, each linking to its service page.
+const orbit = ["plumbing", "electrical", "hvac", "roofing", "pest-control", "water-damage", "tree-services"]
+  .map((slug) => services.find((s) => s.slug === slug)!)
+  .map((s, i) => ({ ...s, angle: [-90, -45, 30, 75, 120, 165, 210][i] }));
 
 const reasons = [
   { icon: "clock", title: "Fast connections", text: "We connect you with a local specialist in minutes, not days." },
@@ -50,16 +54,24 @@ const schema = [
       </div>
 
       <div class="hero-art">
-        <div class="portrait">
-          <Image
-            src={portrait}
-            alt="Smiling handyman in an orange hard hat with arms crossed"
-            widths={[360, 540, 720]}
-            sizes="(max-width: 860px) 70vw, 460px"
-            loading="eager"
-            fetchpriority="high"
-          />
+        <div class="ring">
+          {
+            orbit.map((s) => (
+              <a class="orb" href={`/services/${s.slug}/`} style={`--a: ${s.angle}deg`} aria-label={s.name} title={s.name}>
+                <Icon name={s.icon} size={24} />
+              </a>
+            ))
+          }
         </div>
+        <Image
+          src={mascot}
+          alt="The Home Services Guru, meditating"
+          class="hero-guru"
+          widths={[320, 480, 664]}
+          sizes="(max-width: 860px) 45vw, 270px"
+          loading="eager"
+          fetchpriority="high"
+        />
         <div class="float f1"><Icon name="clock" size={20} /> Connected in minutes</div>
         <div class="float f2"><Icon name="pin" size={20} /> Local to you</div>
         <div class="float f3"><Icon name="handshake" size={20} /> Help for projects big and small</div>
@@ -193,21 +205,66 @@ const schema = [
     position: relative;
     justify-self: center;
     width: min(100%, 460px);
-  }
-
-  .portrait {
-    border-radius: 240px 240px 28px 28px;
-    overflow: hidden;
-    background: var(--sand);
-    box-shadow: var(--shadow-lg);
     aspect-ratio: 4 / 5;
+    container-type: inline-size;
   }
 
-  .portrait img {
+  /* White ring with a dashed track; the service icons sit on the track. */
+  .ring {
+    position: absolute;
+    top: 6%;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 15%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .ring::before {
+    content: "";
+    position: absolute;
+    inset: 9%;
+    border-radius: 50%;
+    border: 2px dashed #f2c7a1;
+  }
+
+  .orb {
+    --size: clamp(38px, 11.5cqi, 52px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: var(--size);
+    height: var(--size);
+    margin: calc(var(--size) / -2);
+    border-radius: 50%;
+    background: var(--orange-soft);
+    color: var(--orange-strong);
+    transform: rotate(var(--a)) translate(41cqi) rotate(calc(var(--a) * -1));
+    transition: background 0.15s;
+  }
+
+  .orb:hover,
+  .orb:focus-visible {
+    background: #ffe0c7;
+  }
+
+  .orb :global(svg) {
+    width: 46%;
+    height: 46%;
+  }
+
+  .hero-art :global(.hero-guru) {
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    width: 58%;
+    height: auto;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 18px 24px rgb(21 28 36 / 18%));
+    pointer-events: none;
   }
 
   .float {
@@ -231,17 +288,17 @@ const schema = [
   }
 
   .f1 {
-    top: 18%;
-    left: -14%;
+    top: -2%;
+    left: -6%;
   }
 
   .f2 {
-    top: 46%;
-    right: -4%;
+    top: 40%;
+    right: -10%;
   }
 
   .f3 {
-    bottom: 10%;
+    bottom: 4%;
     left: -6%;
   }
 
@@ -436,18 +493,15 @@ const schema = [
     .hero-art {
       width: min(72%, 340px);
     }
-    /* Keep the badges below the face on narrow screens */
     .f1 {
-      top: 50%;
-      left: -14%;
+      left: -12%;
     }
+    /* No room beside the guru; the picker's note already says "Local pros near you". */
     .f2 {
-      top: 67%;
-      right: -10%;
+      display: none;
     }
     .f3 {
-      bottom: 5%;
-      left: -8%;
+      left: -10%;
     }
     .guides-grid {
       grid-template-columns: 1fr;
