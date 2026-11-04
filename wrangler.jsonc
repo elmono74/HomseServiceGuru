@@ -10,8 +10,9 @@
     "binding": "ASSETS",
     // Serve dist/404.html with a 404 status for unknown paths.
     "not_found_handling": "404-page",
-    // Only the APIs (chat, contact) run Worker code; everything else is static files.
-    "run_worker_first": ["/api/*"]
+    // The APIs (chat, contact, stats) and the About page, which gets the weekly
+    // connected count inserted, run Worker code; everything else is static files.
+    "run_worker_first": ["/api/*", "/about-us/"]
   },
   // Per-IP limits so bots can't run up the Claude bill or flood the inbox.
   "ratelimits": [
@@ -26,6 +27,8 @@
       "simple": { "limit": 5, "period": 60 }
     }
   ],
+  // Weekly "people connected" count, sent by the call system (POST /api/stats/connected).
+  "kv_namespaces": [{ "binding": "STATS", "id": "bfacfa4ffede405c974f946ef0aeec47" }],
   // Contact form email. homeservices.guru is onboarded to Email Sending.
   "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["no-reply@homeservices.guru"] }],
   "vars": {
@@ -33,5 +36,6 @@
     // Sends straight to joinpaypercall until the info@homeservices.guru forward is verified.
     "CONTACT_TO": "info@joinpaypercall.com"
   }
-  // Secret (set once, not in this file): npx wrangler secret put ANTHROPIC_API_KEY
+  // Secrets (set once, not in this file): npx wrangler secret put ANTHROPIC_API_KEY
+  // and npx wrangler secret put STATS_TOKEN (the call system's key for /api/stats/connected)
 }

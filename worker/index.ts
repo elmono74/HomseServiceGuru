@@ -1,17 +1,20 @@
-// Cloudflare Worker entry: POST /api/contact emails the contact form, and
+// Cloudflare Worker entry: POST /api/contact emails the contact form,
 // POST /api/chat answers visitor questions with Claude
-// Haiku and points them to the right service's call button. Every other request
-// is served from the static Astro build (dist/) via the ASSETS binding.
+// Haiku and points them to the right service's call button, and
+// POST /api/stats/connected takes the call system's weekly count for the About
+// page (worker/stats.ts). Every other request is served from the static Astro
+// build (dist/) via the ASSETS binding.
 import Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { z } from "zod";
 import services from "../src/data/services.json";
+import { aboutWithCount, handleConnected, type StatsEnv } from "./stats";
 
 interface RateLimiter {
   limit(options: { key: string }): Promise<{ success: boolean }>;
 }
 
-interface Env {
+interface Env extends StatsEnv {
   ASSETS: { fetch(request: Request): Promise<Response> };
   ANTHROPIC_API_KEY?: string;
   CHAT_LIMITER?: RateLimiter;
@@ -215,12 +218,14 @@ export default {
     const api: Record<string, (request: Request, env: Env) => Promise<Response>> = {
       "/api/chat": handleChat,
       "/api/contact": handleContact,
+      "/api/stats/connected": handleConnected,
     };
     const handler = api[url.pathname];
     if (handler) {
       if (request.method !== "POST") return json({ error: "Method not allowed." }, 405);
       return handler(request, env);
     }
+    if (url.pathname === "/about-us/") return aboutWithCount(await env.ASSETS.fetch(request), env);
     return env.ASSETS.fetch(request);
   },
 };

@@ -74,13 +74,10 @@ const schema = [
           emergencies to roofing, remodeling, pest control, and more, we help you get the help you need.
         </p>
         <dl class="stats">
-          <div>
-            <dt>1,250+</dt>
-            <dd>Satisfied clients</dd>
-          </div>
-          <div>
-            <dt>5+</dt>
-            <dd>Years helping people find local service providers</dd>
+          {/* The Worker swaps in the weekly count from the call system (worker/stats.ts). */}
+          <div data-stat="connected">
+            <dt>Since 2026</dt>
+            <dd>Connecting people with local pros</dd>
           </div>
         </dl>
       </div>
@@ -212,7 +209,7 @@ const schema = [
 
   .stats dd {
     margin: 6px 0 0;
-    max-width: 200px;
+    max-width: 260px;
     color: var(--muted);
     font-size: 0.92rem;
   }
