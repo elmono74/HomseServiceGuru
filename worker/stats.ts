@@ -4,7 +4,7 @@
 // Sunday night with `Authorization: Bearer <STATS_TOKEN>`. count is the number of unique
 // callers (each phone number once) put through to a provider so far that year. We keep the
 // latest value in KV and insert a rounded-down figure into the About page as it's served.
-// Until a count arrives, the page keeps its built-in "Since 2020" line.
+// Until a count arrives, the page keeps its built-in "Since 2018" line.
 
 interface KV {
   get(key: string, type: "json"): Promise<unknown>;

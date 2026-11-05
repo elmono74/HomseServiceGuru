@@ -33,7 +33,7 @@ curl -X POST https://homeservices.guru/api/stats/connected \
 
 | Status | Meaning |
 |---|---|
-| `200` | Saved. Body: `{"ok": true, "stored": {...}, "shown": "4,300+"}`. `shown` is `null` under 100, and the page then keeps its "Since 2020" line. |
+| `200` | Saved. Body: `{"ok": true, "stored": {...}, "shown": "4,300+"}`. `shown` is `null` under 100, and the page then keeps its "Since 2018" line. |
 | `400` | Bad body: not JSON, `count` not a whole number, or `year` not this year (or last year). |
 | `401` | Missing or wrong token. |
 | `405` | Not a POST. |
@@ -47,7 +47,7 @@ Treat anything other than `200` as a failure worth alerting on. Error bodies inc
 
 | Count sent | Page shows |
 |---|---|
-| under 100 | "Since 2020 / Connecting people with local pros" (no number) |
+| under 100 | "Since 2018 / Connecting people with local pros" (no number) |
 | 100 to 9,999 | rounded down to the hundred: 4,317 becomes "4,300+" |
 | 10,000 and up | rounded down to the thousand: 12,480 becomes "12,000+" |
 
