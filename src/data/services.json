@@ -79,21 +79,43 @@
     "help": "Call today to talk to a local HVAC specialist.",
     "intro": "When your heating or cooling system breaks down, you don’t have time to waste. At Home Services Guru, we make it easy to connect with local HVAC specialists. Whether it’s an emergency repair, seasonal maintenance, or a full system installation, we’ll help you find the right professional quickly.",
     "benefits": [
-      "Quick Connection",
-      "Local Specialists",
-      "Full HVAC Support",
-      "Affordable Solutions",
-      "Air Conditioning Repair & Installation",
-      "Heating & Furnace Repair"
+      "Fast connection to local HVAC specialists",
+      "Affordable solutions to fit your budget",
+      "Help with small or large problems",
+      "Local professionals who know your area",
+      "Save time—no endless searching online",
+      "Peace of mind with one simple call"
     ],
     "jobs": [
-      "Local Experts Only",
-      "No Endless Searching",
-      "Fast Connections",
-      "Peace of Mind"
+      "Air Conditioning Repair & Installation",
+      "Heating & Furnace Repair",
+      "Heat Pump Repair & Installation",
+      "Seasonal Tune-Ups & Maintenance",
+      "Full System Replacement",
+      "Thermostat Installation",
+      "Ductwork Repair",
+      "Indoor Air Quality Solutions",
+      "Emergency Heating & Cooling Service"
     ],
     "why": "Finding the right HVAC provider on your own can be stressful and time-consuming. That’s where Home Services Guru comes in. Unlike big national directories or random online searches, we work exclusively with local HVAC specialists in your community.",
-    "reasons": [],
+    "reasons": [
+      {
+        "title": "Local Experts Only",
+        "text": "We connect you with HVAC pros who work in your area."
+      },
+      {
+        "title": "No Endless Searching",
+        "text": "Skip the listings, reviews and ads. One call does it."
+      },
+      {
+        "title": "Fast Connections",
+        "text": "Most callers are connected with a local pro in minutes."
+      },
+      {
+        "title": "Peace of Mind",
+        "text": "Help with heating and cooling from one simple call."
+      }
+    ],
     "faq": [
       {
         "q": "How quickly can I get connected with an HVAC specialist?",
@@ -124,7 +146,7 @@
     "icon": "bolt",
     "emergency": true,
     "headline": "Find a Trusted Local Electrician Today",
-    "help": "Call today to talk to a local Electrician.",
+    "help": "Call today to talk to a local electrician.",
     "intro": "When electrical issues strike, you need help fast. At Home Services Guru, we make it simple to connect with local electricians in your area. Whether it’s a small repair, an emergency outage, or a major installation, one quick call to us saves you the time and stress of searching on your own.",
     "benefits": [
       "Fast connection to local electricians",
@@ -175,66 +197,36 @@
     "name": "Water Damage",
     "icon": "droplet",
     "emergency": true,
-    "headline": "Common Water Damage Services",
+    "headline": "Water Damage Restoration Near You",
     "help": "Water damage can’t wait. Call Home Services Guru today and get connected with a local water damage restoration specialist.",
     "intro": "When water damage strikes, you don’t have time to search through dozens of companies. Home Services Guru connects you quickly with local restoration specialists who can help you start drying out and repairing your home.",
     "benefits": [],
     "jobs": [
-      "Local Restoration Providers",
-      "Fast Connections",
-      "Personalized Matches",
-      "No Guesswork",
-      "Peace of Mind"
+      "Emergency Water Extraction",
+      "Drying & Dehumidification",
+      "Flood Damage Cleanup",
+      "Leak Detection & Repair",
+      "Mold Prevention & Remediation",
+      "Structural Drying & Repairs",
+      "Sewage Cleanup"
     ],
-    "why": "When water damage strikes, you don’t have time to search through dozens of companies. Home Services Guru connects you quickly with local restoration specialists who can help you start drying out and repairing your home.",
+    "why": "Finding a restoration company in the middle of a mess is stressful. With one call, Home Services Guru connects you with a local water damage specialist, so you can focus on your home.",
     "reasons": [
       {
-        "title": "Local Emergency Experts",
-        "text": "Professionals in your area ready to respond"
+        "title": "Local Restoration Providers",
+        "text": "Independent restoration pros in your area."
       },
       {
         "title": "Fast Connections",
-        "text": "One call gets you immediate help"
+        "text": "One call connects you with a local specialist."
       },
       {
-        "title": "No Stress or Guesswork",
-        "text": "We’ve already found the right professionals for you"
-      },
-      {
-        "title": "Personalized Matches",
-        "text": "The right specialist for your specific situation"
+        "title": "No Guesswork",
+        "text": "Skip the searching. We find a pro for you."
       },
       {
         "title": "Peace of Mind",
-        "text": "Help when you need it most"
-      },
-      {
-        "title": "Emergency Water Extraction",
-        "text": "Remove standing water quickly to prevent further damage."
-      },
-      {
-        "title": "Drying & Dehumidification",
-        "text": "Thorough drying to protect walls, floors, and belongings."
-      },
-      {
-        "title": "Flood Damage Cleanup",
-        "text": "Professional cleanup after storms or major water events."
-      },
-      {
-        "title": "Leak Detection & Repair",
-        "text": "Identify and fix hidden water sources."
-      },
-      {
-        "title": "Mold Prevention & Remediation",
-        "text": "Stop mold growth before it becomes a serious issue."
-      },
-      {
-        "title": "Structural Drying & Repairs",
-        "text": "Restore damaged areas safely and effectively."
-      },
-      {
-        "title": "Sewage Cleanup",
-        "text": "Safe handling and cleanup of hazardous water situations."
+        "text": "Help when you need it most."
       }
     ],
     "faq": [
@@ -339,7 +331,7 @@
     "icon": "spore",
     "emergency": false,
     "headline": "Mold Remediation Specialists Near You",
-    "help": "Call today to talk to a local Mold Remediation Specialist.",
+    "help": "Call today to talk to a local mold remediation specialist.",
     "intro": "Mold in your home isn’t just unsightly—it can affect your health and damage your property. That’s why it’s important to act fast. At Home Services Guru, we connect you quickly with local mold remediation specialists who can remove mold and help prevent it from coming back. One quick call saves you hours of searching.",
     "benefits": [
       "Fast connection to local professionals",
@@ -359,7 +351,7 @@
       "Attic, basement, and crawl space remediation",
       "Commercial and residential mold services"
     ],
-    "why": "At Home Services Guru, we don’t just hand you a list of names and leave you guessing. We connect you directly with local mold remediation specialists. Unlike large directories or endless online searches, we keep it simple:",
+    "why": "At Home Services Guru, we don’t just hand you a list of names and leave you guessing. We connect you directly with local mold remediation specialists. Unlike large directories or endless online searches, we keep it simple: one call, one local pro.",
     "reasons": [
       {
         "title": "Local Specialists Only",
@@ -558,7 +550,7 @@
     "icon": "bath",
     "emergency": false,
     "headline": "Transform Your Bathroom with a Trusted Local Remodeler",
-    "help": "Call today to talk to a local Bathroom Remodeling Specialist.",
+    "help": "Call today to talk to a local bathroom remodeling specialist.",
     "intro": "Thinking about upgrading your bathroom? From simple updates to complete renovations, Home Services Guru makes it easy to connect with local bathroom remodeling specialists. Skip the stress of searching on your own—one call to us links you directly with a local pro who can bring your vision to life.",
     "benefits": [
       "Fast connection to local remodelers",
@@ -627,7 +619,7 @@
     "intro": "Your kitchen is the heart of your home. Whether you need a full remodel or small upgrades, Home Services Guru connects you with local kitchen remodeling specialists who can bring your vision to life. From modern makeovers to functional improvements, we help you find the right pro fast.",
     "benefits": [
       "Local Specialists – Work with remodelers who understand your community and local style trends.",
-      "Local Experts – Remodelers who know your area.",
+      "Projects Big and Small – From new cabinets to a full redesign.",
       "Stress-Free Process – We do the hard work of finding the right contractor for you.",
       "Affordable Options – Get expert remodeling without overpaying.",
       "Save time—no endless searching online",
@@ -635,14 +627,13 @@
     ],
     "jobs": [
       "Complete kitchen renovations",
-      "Vanity and countertop upgrades",
-      "Tile and flooring installation",
+      "Cabinet installation & refinishing",
+      "Countertop replacement",
+      "Kitchen island installation",
+      "Backsplash, tile and flooring installation",
       "Lighting and electrical updates",
-      "Plumbing fixture replacements",
-      "Custom design and layout improvements",
-      "Cabinet Installation & Refinishing",
-      "Countertop Replacement",
-      "Lighting & Fixtures"
+      "Sink, faucet and plumbing fixture replacements",
+      "Custom design and layout improvements"
     ],
     "why": "Finding the right remodeling contractor can be overwhelming. At Home Services Guru, we make it simple by connecting you directly to local kitchen remodeling specialists.",
     "reasons": [
@@ -713,7 +704,7 @@
     "reasons": [
       {
         "title": "Local Specialists",
-        "text": "Work with pros who understand your area’s building standards and weather conditions."
+        "text": "Work with pros who know the trees and weather in your area."
       },
       {
         "title": "Local Professionals",
@@ -725,7 +716,7 @@
       },
       {
         "title": "Comprehensive Tree Care",
-        "text": "From small repairs to large projects, we’ve got you covered."
+        "text": "From a quick trim to a full removal, one call gets you started."
       }
     ],
     "faq": [
@@ -912,12 +903,9 @@
     "jobs": [
       "Septic Tank Pumping & Cleaning",
       "Septic System Inspections",
-      "Septic Tank Installation",
       "Septic Tank Repairs",
+      "Septic System Installation & Replacement",
       "Drain Field Repair & Replacement",
-      "Drain Field Services",
-      "Septic System Installation",
-      "Septic System Replacement",
       "Emergency Septic Service",
       "Septic Tank Locating"
     ],
@@ -951,7 +939,7 @@
       },
       {
         "q": "How much does septic tank service cost?",
-        "a": "The cost varies based on the type of service needed, the size of the tank, and your location. Routine pumping is generally more affordable than major repairs or system replacements. We can connect you with local professionals for a free estimate."
+        "a": "The cost varies based on the type of service needed, the size of the tank, and your location. Routine pumping is generally more affordable than major repairs or system replacements. The pro can give you a quote for your job."
       },
       {
         "q": "Can I use my plumbing while my septic tank is being serviced?",
@@ -974,41 +962,31 @@
     "intro": "Finding the right home security provider can be confusing—different systems, contracts, and installers make it hard to choose. Home Services Guru takes the stress out of the process by connecting you directly with local home security professionals.",
     "benefits": [],
     "jobs": [
-      "Local Security Providers",
-      "Fast Connections",
-      "Personalized Matches",
-      "No Guesswork",
-      "Peace of Mind"
+      "Security Camera Installation",
+      "Smart Home Security Systems",
+      "Burglar & Intrusion Alarms",
+      "Motion Detectors & Sensors",
+      "Video Doorbell Installation",
+      "Home Automation Integration",
+      "System Upgrades & Maintenance"
     ],
-    "why": "Finding the right home security provider can be confusing—different systems, contracts, and installers make it hard to choose. Home Services Guru takes the stress out of the process by connecting you directly with local home security professionals.",
+    "why": "Instead of comparing systems and installers on your own, one call connects you with a local home security pro who can talk through your options.",
     "reasons": [
       {
-        "title": "Security Camera Installation",
-        "text": "Indoor and outdoor camera systems for full visibility."
+        "title": "Local Security Providers",
+        "text": "Independent installers in your area."
       },
       {
-        "title": "Smart Home Security Systems",
-        "text": "Connect your alarms, lights, and locks for total control."
+        "title": "Fast Connections",
+        "text": "One call connects you with a local pro."
       },
       {
-        "title": "Burglar & Intrusion Alarms",
-        "text": "Professional alarm system setup for peace of mind."
+        "title": "Personalized Matches",
+        "text": "A pro for the system you have in mind."
       },
       {
-        "title": "Motion Detectors & Sensors",
-        "text": "Advanced technology to detect movement and protect entry points."
-      },
-      {
-        "title": "Video Doorbell Installation",
-        "text": "See who’s at your door from anywhere."
-      },
-      {
-        "title": "Home Automation Integration",
-        "text": "Combine security with convenience through smart tech."
-      },
-      {
-        "title": "System Upgrades & Maintenance",
-        "text": "Keep your equipment running smoothly year-round."
+        "title": "No Guesswork",
+        "text": "Skip comparing dozens of companies on your own."
       }
     ],
     "faq": [

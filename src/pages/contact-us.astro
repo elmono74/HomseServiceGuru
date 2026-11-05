@@ -7,7 +7,7 @@ import { services, telHref } from "../data/services";
 // providers (largest network, best providers, 24/7). The form posts to /api/contact
 // (worker/index.ts), which emails it through Cloudflare Email Sending.
 const withPhone = services.filter((s) => s.phone);
-const times = ["Morning (8am–12pm)", "Afternoon (12pm–4pm)", "Evening (4pm–8pm)", "Any time"];
+const times = ["Morning (8am–12pm)", "Afternoon (12pm–4pm)", "Evening (4pm–8pm)"];
 const reasons = [
   { icon: "pin", title: "Local Partners", text: "We connect you with service providers in your area." },
   { icon: "handshake", title: "Help for Projects Big and Small", text: "From a quick repair to a full remodel, one call gets you started." },
@@ -24,7 +24,7 @@ const reasons = [
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Contact us</span>
       </nav>
-      <span class="eyebrow">Let's work together</span>
+      <span class="eyebrow">We're here to help</span>
       <h1>Need fast <span class="hl">assistance?</span></h1>
       <p class="lede">
         Navigate to the page for the service you need and call to speak to a specialist now. Or send us a message and
